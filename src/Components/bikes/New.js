@@ -217,3 +217,21 @@ export default class NewBikeForm extends React.Component {
     );
   }
 }
+
+NewBikeForm.defaultProps = {
+  bike: {
+    serialNumber: "",
+    brand: "",
+    color: "",
+    frameSize: "",
+    tireSize: "",
+    tirePressure: "",
+    gears: 0,
+    bell: false,
+    frontReflector: false,
+    rearReflector: false,
+    frontLight: false,
+    rearLight: false,
+    status: "available"
+  }
+};
