@@ -19,6 +19,13 @@ const EnglishLabels = {
   projectTitle: 'Velo-Vanier',
   chooseImage: 'Choose Image',
   bikes: 'Bikes',
+  createNewUser: 'Create new user',
+  selecUser: 'Selec user',
+  next: 'Next',
+  searchUserPlaceholder: 'Search by name, email, or phone number...',
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
   lang: 'Fr',
 
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
