@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
-import DefaultLayout from '../layouts/Default'
+import DefaultLayout from '../layouts/Default';
+import API from '../../helpers/API';
 
 export default class ShowBike extends React.Component {
   constructor(props) {
@@ -27,7 +27,11 @@ export default class ShowBike extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id
     // fetch bike record from api using id
-    axios.get('http://eb66bc8f.ngrok.io/api/bike/167')
+    console.log('id', id)
+    API.get(`bikes/${id}`).then(data => {
+      console.log(data)
+      this.setState({ bike: data })
+    })
   }
 
   render() {

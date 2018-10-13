@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/home/Home'
 import NewBike from './components/bikes/New'
 import ShowBike from './components/bikes/Show'
+import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
 import ShowUser from './components/users/Show'
 import LoanWizard from "./components/LoanWizard/LoanWizard";
@@ -17,6 +18,7 @@ const Entry = () => (
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
       <Route path="/users/:id" component={ShowUser} />
+      <Route path="/bikes/" component={BikeIndex} />
     </Switch>
   </Router>
 );
