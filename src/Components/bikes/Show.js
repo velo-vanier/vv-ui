@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import DefaultLayout from '../layouts/Default'
 
 export default class ShowBike extends React.Component {
   constructor(props) {
@@ -14,7 +15,9 @@ export default class ShowBike extends React.Component {
 
   render() {
     return (
-      <p>{`This is bike id ${this.props.match.params.id}`}</p>
+      <DefaultLayout>
+        <p>{`This is bike id ${this.props.match.params.id}`}</p>
+      </DefaultLayout>
     );
   }
 }

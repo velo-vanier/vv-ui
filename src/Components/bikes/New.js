@@ -1,79 +1,80 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import DefaultLayout from '../layouts/Default'
 
 export default class NewBikeForm extends React.Component {
   render() {
     return (
-      <Form>
-        <FormGroup>
-          <Label for="serialNumber">Serial number</Label>
-          <Input type="serialNumber" name="serialNumber" id="serialNumber" placeholder="123456789" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <Input type="select" name="select" id="exampleSelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelectMulti">Select Multiple</Label>
-          <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Text Area</Label>
-          <Input type="textarea" name="text" id="exampleText" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleFile">File</Label>
-          <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-          </FormText>
-        </FormGroup>
-        <FormGroup tag="fieldset">
-          <legend>Radio Buttons</legend>
+      <DefaultLayout>
+        <Form>
+          <FormGroup>
+            <Label for="serialNumber">Serial number</Label>
+            <Input type="text" name="serialNumber" id="serialNumber" placeholder="123456789" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="brand">Brand</Label>
+            <Input type="text" name="brand" id="brand" placeholder="Peugot" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="colour">Colour</Label>
+            <Input type="text" name="colour" id="colour" placeholder="Pink" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="frameSize">Frame size</Label>
+            <Input type="text" name="frameSize" id="frameSize" placeholder="15 inches" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="tireSize">Tire size</Label>
+            <Input type="text" name="tireSize" id="tireSize" placeholder="27 inches" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="tirePressure">Tire pressure</Label>
+            <Input type="text" name="tirePressure" id="tirePressure" placeholder="99" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="gears">Number of gears</Label>
+            <Input type="number" name="gears" id="gears" placeholder="3" />
+          </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option one is this and that—be sure to include why it's great
+              <Input type="checkbox" id="bell" name="bell" />{' '}
+              Bell or horn
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option two can be something else and selecting it will deselect option one
+              <Input type="checkbox" id="frontReflector" name="frontReflector" />{' '}
+              Front reflector
             </Label>
           </FormGroup>
-          <FormGroup check disabled>
+          <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio1" disabled />{' '}
-              Option three is disabled
+              <Input type="checkbox" id="rearReflector" name="rearReflector" />{' '}
+              Rear reflector
             </Label>
           </FormGroup>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input type="checkbox" />{' '}
-            Check me out
-          </Label>
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+
+          <FormGroup>
+            <Label for="status">Status</Label>
+            <Input type="select" name="status" id="status">
+              <option>Available</option>
+              <option>Testing</option>
+              <option>Needs repair</option>
+              <option>On loan</option>
+            </Input>
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="photo">Photo</Label>
+            <Input type="file" name="photo" id="photo" />
+            <FormText color="muted">
+              Take a photo of the bike.
+            </FormText>
+          </FormGroup>
+
+          <Button>Submit</Button>
+        </Form>
+      </DefaultLayout>
     );
   }
 }
