@@ -13,12 +13,12 @@ const Entry = () => (
   <Router>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/bikes/" component={BikeIndex} />
       <Route path="/bikes/new" component={NewBike} />
       <Route path="/loan" component={LoanWizard} />
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
       <Route path="/users/:id" component={ShowUser} />
+      <Route path="/bikes/" component={BikeIndex} />
     </Switch>
   </Router>
 );

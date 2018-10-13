@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import DefaultLayout from '../layouts/Default'
+import API from '../../helpers/API'
 
 export default class BikeIndex extends React.Component {
   constructor(props) {
@@ -9,12 +9,9 @@ export default class BikeIndex extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://eb66bc8f.ngrok.io/api/bikes?page=${this.state.page}`)
-    .then(res => {
-      console.log(res)
-      this.setState({
-        bikes: res.data.data
-      })
+    API.get('bikes', { page: 1 }).then(res => {
+      console.log('data', res)
+      this.setState({ bikes: res.data.data })
     })
   }
 
