@@ -18,6 +18,7 @@ export const switchLanguage = () => setLocalization(getLocalization() === ENGLIS
 const EnglishLabels = {
   projectTitle: 'Velo-Vanier',
   chooseImage: 'Choose Image',
+  bikes: 'Bikes',
   lang: 'Fr',
 
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
@@ -34,6 +35,7 @@ const EnglishLabels = {
 const FrenchLabels = {
   projectTitle: 'Velo-Vanier',
   chooseImage: 'Choose Image',
+  bikes: 'Bikes French',
   lang: 'En',
 
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
