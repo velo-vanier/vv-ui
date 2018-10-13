@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import DefaultLayout from "../layouts/Default";
 import { labels } from "../../helpers/localization";
 import { BIKE_CLASSES_EN } from "../../helpers/constants";
+import API from "../../helpers/API"
 
 
 export default class NewBikeForm extends React.Component {
@@ -38,8 +39,10 @@ export default class NewBikeForm extends React.Component {
   };
 
   submit = () => {
-    // submit form
     console.log(this.state.bike)
+    API.post('bikes', this.state.bike).then(res => {
+      console.log(res)
+    })
   }
 
   render() {
@@ -56,8 +59,19 @@ export default class NewBikeForm extends React.Component {
               name="serialNumber"
               id="serialNumber"
               placeholder="123456789"
-              value={bike.serialNumber}
-              onChange={this.updateBike("serialNumber")}
+              value={bike.SerialNumber}
+              onChange={this.updateBike("SerialNumber")}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="description">{labels.description()}</Label>
+            <Input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="123456789"
+              value={bike.Description}
+              onChange={this.updateBike("Description")}
             />
           </FormGroup>
           <FormGroup>
@@ -67,8 +81,8 @@ export default class NewBikeForm extends React.Component {
               name="brand"
               id="brand"
               placeholder="Peugot"
-              value={bike.brand}
-              onChange={this.updateBike("brand")}
+              value={bike.Brand}
+              onChange={this.updateBike("Brand")}
             />
           </FormGroup>
           <FormGroup>
@@ -78,8 +92,8 @@ export default class NewBikeForm extends React.Component {
               name="colour"
               id="colour"
               placeholder="Pink"
-              value={bike.color}
-              onChange={this.updateBike("color")}
+              value={bike.Color}
+              onChange={this.updateBike("Color")}
             />
           </FormGroup>
           <FormGroup>
@@ -100,19 +114,19 @@ export default class NewBikeForm extends React.Component {
               name="tireSize"
               id="tireSize"
               placeholder="27 inches"
-              value={bike.tireSize}
-              onChange={this.updateBike("tireSize")}
+              value={bike.TireSize}
+              onChange={this.updateBike("TireSize")}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="tirePressure">{labels.tirePressure()}</Label>
+            <Label for="maxPSI">{labels.maxPSI()}</Label>
             <Input
-              type="text"
-              name="tirePressure"
-              id="tirePressure"
+              type="number"
+              name="maxPSI"
+              id="maxPSI"
               placeholder="99"
-              value={bike.tirePressure}
-              onChange={this.updateBike("tirePressure")}
+              value={bike.TireMaxPSI}
+              onChange={this.updateBike("TireMaxPSI")}
             />
           </FormGroup>
           <FormGroup>
@@ -122,8 +136,8 @@ export default class NewBikeForm extends React.Component {
               name="gears"
               id="gears"
               placeholder="3"
-              value={bike.gears}
-              onChange={this.updateBike("gears")}
+              value={bike.GearCount}
+              onChange={this.updateBike("GearCount")}
             />
           </FormGroup>
           <FormGroup check>
@@ -132,8 +146,8 @@ export default class NewBikeForm extends React.Component {
                 type="checkbox"
                 id="bell"
                 name="bell"
-                checked={bike.bell}
-                onChange={this.updateBikeChecked("bell")}
+                checked={bike.BellHorn}
+                onChange={this.updateBikeChecked("BellHorn")}
               />{" "}
               {labels.bellOrHorn()}
             </Label>
@@ -142,62 +156,39 @@ export default class NewBikeForm extends React.Component {
             <Label check>
               <Input
                 type="checkbox"
-                id="frontReflector"
-                name="frontReflector"
-                checked={bike.frontReflector}
-                onChange={this.updateBikeChecked("frontReflector")}
+                id="reflectors"
+                name="reflectors"
+                checked={bike.Reflectors}
+                onChange={this.updateBikeChecked("Reflectors")}
               />{" "}
-              {labels.frontReflector()}
+              {labels.reflectors()}
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
               <Input
                 type="checkbox"
-                id="rearReflector"
-                name="rearReflector"
-                checked={bike.rearReflector}
-                onChange={this.updateBikeChecked("rearReflector")}
+                id="lights"
+                name="lights"
+                checked={bike.Lights}
+                onChange={this.updateBikeChecked("Lights")}
               />{" "}
-              {labels.rearReflector()}
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="frontLight"
-                name="frontLight"
-                checked={bike.frontLight}
-                onChange={this.updateBikeChecked("frontLight")}
-              />{" "}
-              {labels.frontLight()}
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="checkbox"
-                id="rearLight"
-                name="rearLight"
-                checked={bike.rearLight}
-                onChange={this.updateBikeChecked("rearLight")}
-              />{" "}
-              {labels.rearLight()}
+              {labels.lights()}
             </Label>
           </FormGroup>
 
           <FormGroup>
             <Label for="bikeClass">{labels.bikeClass()}</Label>
-            <Input type="select" name="bikeClass" id="bikeClass" onChange={this.updateBike('bikeClass')} value={bike.bikeClass}>
+            <Input type="select" name="bikeClass" id="bikeClass" onChange={this.updateBike('Class')} value={bike.Class}>
               {Object.keys(bikeClasses).map((id) => {
                 return <option key={`status-${id}`} value={id}>{bikeClasses[id]}</option>;
               })}
             </Input>
           </FormGroup>
+
           <FormGroup>
             <Label for="status">{labels.status()}</Label>
-            <Input type="select" name="status" id="status" onChange={this.updateBike('status')} value={bike.status}>
+            <Input type="select" name="status" id="status" onChange={this.updateBike('ID_Status')} value={bike.ID_Status}>
               {this.state.statuses.map(status => {
                 const label = labels.statusLabel(status.ID_Status)
                 return <option key={`status-${status.ID_Status}`} value={status.ID_Status}>{label}</option>;
@@ -217,3 +208,22 @@ export default class NewBikeForm extends React.Component {
     );
   }
 }
+
+NewBikeForm.defaultProps = {
+  bike: {
+    serialNumber: "",
+    brand: "",
+    color: "",
+    frameSize: "",
+    tireSize: "",
+    tirePressure: "",
+    gears: 0,
+    bell: false,
+    frontReflector: false,
+    rearReflector: false,
+    frontLight: false,
+    rearLight: false,
+    status: "available"
+  }
+};
+
