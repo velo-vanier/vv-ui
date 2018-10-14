@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import { push } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from "reactstrap";
 import DefaultLayout from "../layouts/Default";
 import { labels } from "../../helpers/localization";

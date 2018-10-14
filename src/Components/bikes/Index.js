@@ -1,4 +1,5 @@
 import React from 'react';
+import queryString from 'query-string';
 import DefaultLayout from '../layouts/Default'
 import API from '../../helpers/API'
 import BikeCard from './BikeCard'
@@ -40,16 +41,17 @@ const PaginationButtons = props => {
 export default class BikeIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { bikes: [], page: 1 }
+    this.state = { bikes: [], page: 1, searchParams: {} }
   }
 
   componentDidMount() {
-    this.fetchBikes()
+    const searchParams = queryString.parse(this.props.location.search)
+    this.setState({ searchParams }, this.fetchBikes)
   }
 
   fetchBikes() {
     console.log('fetch page of bikes', this.state.page)
-    API.get('bikes', { page: this.state.page }).then(res => {
+    API.get('bikes', { page: this.state.page, ...this.state.searchParams }).then(res => {
       console.log(res)
       this.setState({ bikes: res.data.data, page: res.data.current_page, pages: res.data.last_page })
     })
@@ -59,8 +61,13 @@ export default class BikeIndex extends React.Component {
     this.setState({ page: num }, this.fetchBikes)
   }
 
-  updateBikeParams = (searchParams) => {
-    this.setState({ searchParams: searchParams })
+  updateBikeParams = (newParams) => {
+    this.setState({
+      searchParams: {
+        ...this.state.searchParams,
+        ...newParams
+      }
+    }, this.fetchBikes)
   }
 
   render() {

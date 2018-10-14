@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { labels } from "../../helpers/localization";
 import { STATUSES_COLORS } from "../../helpers/constants";
 import {
@@ -8,7 +7,6 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Button,
   Badge
 } from "reactstrap";
@@ -16,14 +14,16 @@ import {
 
 const BikeCard = props => {
   const { bike } = props;
+  console.log(bike)
+  const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://placekitten.com/318/180";
   return (
     <div className="col-12 col-sm-6 col-md-4 my-2">
       <Card>
         <CardImg
           top
           width="100%"
-          src="https://placekitten.com/318/180"
-          alt="Card image cap"
+          src={photoSrc}
+          alt={bike.Description}
         />
         <CardBody>
           <CardTitle>{bike.BikeLabel}</CardTitle>
