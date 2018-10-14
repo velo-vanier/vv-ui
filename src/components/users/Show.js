@@ -44,7 +44,7 @@ export default class ShowUser extends React.Component {
       
       //get bikes that are On Loan to the User with id
       //ID_Status = 3 = On Loan
-      API.get(`bikes`, {'filters[ID_User]': id, /*'filters[ID_Status]':3 */ }).then(data => {
+      API.get(`bikes`, {'filters[ID_User]': id, 'filters[ID_Status]':3  }).then(data => {
         console.log(data)
         this.setState({bikes: data})
         console.log(this.state.bikes.data.data);
@@ -74,7 +74,7 @@ export default class ShowUser extends React.Component {
         return <tr>
           <td>{element.BikeLabel}</td>
           <td>{element.overDue}</td>
-          {/* <td>{element.history[0].DueDateTime}</td> */}
+          <td>{element.history[0].DueDateTime}</td>
         </tr>;
       })
     }
@@ -128,11 +128,11 @@ export default class ShowUser extends React.Component {
             </tr>
             <tr>
               <td>Children Under 18</td>
-              <table>
+              {/* <table>
                 <tbody>
-                  {/* {this.getTableRowsChildren()} */}
+                  { {this.getTableRowsChildren()} }
                 </tbody>
-              </table>
+              </table> */}
             </tr>
             <tr>
               <td>Photo Consent</td>
