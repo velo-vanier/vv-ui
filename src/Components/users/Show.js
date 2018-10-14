@@ -5,7 +5,6 @@ import { Table } from 'reactstrap';
 export default class ShowUser extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
     this.state = { 
       user: {
         photo: null,
@@ -29,10 +28,6 @@ export default class ShowUser extends React.Component {
   //     this.dueDate = dueDate;
   //   }
   // }
-=======
-    this.state = { user: {} }
-  }
->>>>>>> 4cffd89059f117ec7d8c3abdd797f1950a152422
 
   componentDidMount() {
     const id = this.props.match.params.id
@@ -67,7 +62,6 @@ export default class ShowUser extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div>
         <img src= {this.state.photo}/>
         <p>Name: {this.state.user.name}</p>
@@ -89,9 +83,6 @@ export default class ShowUser extends React.Component {
         <p>{`Birthday: ${this.state.user.birthday}`}</p>
         <p>{`Address: ${this.state.user.address}`}</p>
       </div>
-=======
-      <p>{`This is user with id ${this.props.match.params.id}`}</p>
->>>>>>> 4cffd89059f117ec7d8c3abdd797f1950a152422
     );
   }
 }
