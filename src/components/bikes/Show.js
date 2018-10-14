@@ -44,10 +44,24 @@ export default class ShowBike extends React.Component {
     })
     JsBarcode("#bike-barcode", `${id}OK`, { height: 50, width: 3, text: id })
   }
+  translateStatus() {
+    if (this.state.bike.data.ID_Status == "5") {
+      return <td>In Test</td>
+    }
+    if (this.state.bike.data.ID_Status == "2") {
+      return <td>Available</td>
+    }
+    if (this.state.bike.data.ID_Status == "3") {
+      return <td>On Loan</td>
+    }
+    if (this.state.bike.data.ID_Status == "4") {
+      return <td>On Hold</td>
+    }
+  }
 
   getStatus() {
-    if (this.state.bike.data.Status = "undefined") {
-      console.log("State is undefined")
+    if (this.state.bike.data.ID_Status == "5" || this.state.bike.data.ID_Status == "6") {
+      console.log("State is repair or test")
       return <Container>
         <h1>Repair Items</h1>
         <FormGroup check>
@@ -209,10 +223,9 @@ export default class ShowBike extends React.Component {
               </tr>
               <tr>
                 <td>Status</td>
-                <td>{`${this.state.bike.data.Status}`}</td>
+                {this.translateStatus()}
+                {/* <td>{`${this.state.bike.data.ID_Status}`}</td> */}
               </tr>
-
-
             </tbody>
           </Table>
         </div>
