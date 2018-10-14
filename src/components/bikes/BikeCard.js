@@ -16,7 +16,7 @@ import {
 const BikeCard = props => {
   const { bike } = props;
   console.log(bike)
-  const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://placekitten.com/318/180";
+  const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://travelwithkitties.com/wp-content/uploads/2018/09/Funny-Animals-On-Bike-nice-cat.jpg";
   return (
     <Col xs="12" sm="6" md="4" className="my-2">
       <Card>

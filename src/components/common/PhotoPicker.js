@@ -8,7 +8,7 @@ const PhotoPicker = props => {
         withIcon={true}
         buttonText={labels.chooseImage}
         onChange={(p) => props.onDrop(p)}
-        imgExtension={['.jpg', '.gif', '.png']}
+        imgExtension={['.jpg', '.gif', '.png', '.jpeg']}
         maxFileSize={5242880}
     />;
 }
