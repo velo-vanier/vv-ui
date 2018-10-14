@@ -51,6 +51,7 @@ const EnglishLabels = {
   bikeClass: `Bike class`,
   description: `Description`,
   reflectors: `Reflectors`,
+  scanBarcode: `Scan Barcode`,
 
   statusLabel: id => STATUSES_EN[id],
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
@@ -86,6 +87,7 @@ const FrenchLabels = {
   description: `Description`,
   reflectors: `Reflectors`,
   lights: `Lights`,
+  scanBarcode: `Scan Barcode`,
 
   statusLabel: id => STATUSES_FR[id],
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,

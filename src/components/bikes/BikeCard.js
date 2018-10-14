@@ -1,4 +1,5 @@
 import React from "react";
+import { Col } from 'reactstrap';
 import { labels } from "../../helpers/localization";
 import { STATUSES_COLORS } from "../../helpers/constants";
 import {
@@ -17,7 +18,7 @@ const BikeCard = props => {
   console.log(bike)
   const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://placekitten.com/318/180";
   return (
-    <div className="col-12 col-sm-6 col-md-4 my-2">
+    <Col xs="12" sm="6" md="4" className="my-2">
       <Card>
         <CardImg
           top
@@ -35,7 +36,7 @@ const BikeCard = props => {
           <Button className="mr-1" color="primary" outline href={`/bikes/${bike.ID_Bike}`}>View</Button>
         </CardBody>
       </Card>
-    </div>
+    </Col>
   );
 };
 

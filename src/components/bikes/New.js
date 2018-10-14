@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback, Container } from "reactstrap";
 import DefaultLayout from "../layouts/Default";
 import { labels } from "../../helpers/localization";
 import API from "../../helpers/API"
@@ -57,7 +57,7 @@ export default class NewBikeForm extends React.Component {
     console.log(errors)
     return (
       <DefaultLayout>
-        <div className="container">
+        <Container>
           <h1>{labels.newBikeTitle}</h1>
           <Form onSubmit={this.submit}>
             <FormGroup>
@@ -275,7 +275,7 @@ export default class NewBikeForm extends React.Component {
 
             <Button onClick={this.submit}>Submit</Button>
           </Form>
-        </div>
+        </Container>
       </DefaultLayout>
     );
   }
