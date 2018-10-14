@@ -179,56 +179,56 @@ export default class ShowBike extends React.Component {
     const photoSrc = (this.state.bike.data.photos && !!this.state.bike.data.photos.length) ? this.state.bike.data.photos[0].url : "https://img02.aws.kooomo-cloud.com/upload/denver-bike/images/17285_medium.jpg?v=1";
     return (
       <DefaultLayout>
-        <div className="row justify-content-end">
-          <img id="bike-barcode" alt="barcode"></img>
+        <div className="container">
+        <div className="justify-content-left">
+        <h1><span class="label label-default">{labels.profileBike}</span></h1>
+        <img id="bike-barcode" alt="barcode"></img>
         </div>
-        <div className="row">
           <div className="col-6 col-md-3">
             <a href="#" className="thumbnail">
               <img src={photoSrc} alt={this.state.bike.data.Brand}></img>
             </a>
-          </div>
-        </div>
+                      <div>
+                      <h5><span class="label label-default">{labels.status}</span></h5>
+                      <p>{`${this.state.bike.data.status}`}</p>
+                      </div>
 
-        <div>
-          <Table>
-            <tbody>
-              <tr>
-                <td>Serial Number</td>
-                {/* <td>{`${this.state.bike.serialNumber}`}</td> */}
-                <td>{`${this.state.bike.data.SerialNumber}`}</td>
-              </tr>
-              <tr>
-                <td>Brand</td>
-                <td>{`${this.state.bike.data.Brand}`}</td>
-              </tr>
-              <tr>
-                <td>Colour</td>
-                <td>{`${this.state.bike.data.Color}`}</td>
-              </tr>
-              <tr>
-                <td>Bike Class</td>
-                <td>{`${this.state.bike.data.Class}`}</td>
-              </tr>
-              <tr>
-                <td>Tire Size</td>
-                <td>{`${this.state.bike.data.TireSize}`}</td>
-              </tr>
-              <tr>
-                <td>Tire Pressure</td>
-                <td>{`${this.state.bike.data.TireMaxPSI}`}</td>
-              </tr>
-              <tr>
-                <td>Number of Gears</td>
-                <td>{`${this.state.bike.data.GearCount}`}</td>
-              </tr>
-              <tr>
-                <td>Status</td>
-                {this.translateStatus()}
-                {/* <td>{`${this.state.bike.data.ID_Status}`}</td> */}
-              </tr>
-            </tbody>
-          </Table>
+                      <div>
+                      <h5><span class="label label-default">{labels.serialNumber}</span></h5>
+                      <p>{`${this.state.bike.data.SerialNumber}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.brand}</span></h5>
+                      <p>{`${this.state.bike.data.Brand}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.colour}</span></h5>
+                      <p>{`${this.state.bike.data.Colour}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.bikeClass}</span></h5>
+                      <p>{`${this.state.bike.data.bikeClass}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.tireSize}</span></h5>
+                      <p>{`${this.state.bike.data.tireSize}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.maxPSI}</span></h5>
+                      <p>{`${this.state.bike.data.maxPSI}`}</p>
+                      </div>
+
+                      <div>
+                      <h5><span class="label label-default">{labels.gears}</span></h5>
+                      <p>{`${this.state.bike.data.gears}`}</p>
+                      </div>
+          </div>
+
         </div>
 
         {this.getStatus()}

@@ -22,7 +22,7 @@ export default class Example extends React.Component {
       <div>
         <FormGroup>
           <Label for="search">
-            <strong>Search</strong>
+            <strong>{labels.searchNav}</strong>
           </Label>
           <Input
             type="text"
@@ -32,6 +32,7 @@ export default class Example extends React.Component {
               this.props.updateSearchParams({ search: e.target.value })
             }
           />
+          <span id="helpBlock2" class="help-block">{labels.searchBikePlaceholder}</span>
         </FormGroup>
 
         <FormGroup>
@@ -94,12 +95,12 @@ export default class Example extends React.Component {
           </div>
           <div className="col-12 py-1">
             <Button color="primary" href="/loan">
-              Loan a bike
+              {labels.loan}
             </Button>
           </div>
           <div className="col-12 py-1">
             <Button color="primary" href="/bikes/new">
-              Add a bike
+              {labels.newBikeTitle}
             </Button>
           </div>
         </div>

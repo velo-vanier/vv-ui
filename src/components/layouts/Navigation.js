@@ -34,16 +34,16 @@ export default class Navigation extends React.Component {
               <NavLink href="/bikes">{labels.bikes}</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/loan">Loan</NavLink>
+              <NavLink href="/loan">{labels.loan}</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/bikes/new">Add a bike</NavLink>
+              <NavLink href="/bikes/new">{labels.newBikeTitle}</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/users">Users</NavLink>
+              <NavLink href="/users">{labels.borrower}</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/users/new">Add a user</NavLink>
+              <NavLink href="/users/new">{labels.createNewUser}</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/users">Log in</NavLink>
