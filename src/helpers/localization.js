@@ -28,7 +28,7 @@ const EnglishLabels = {
   selecUser: 'Selec user',
   next: 'Next',
   searchUserPlaceholder: 'Search by name, email, or phone number...',
-  selecBike: 'Find a bike',
+  selecBike: 'Select bike',
   searchBike: 'Search',
   searchBikePlaceholder: 'Search by model, serial number or description...',
   name: 'Name',
