@@ -1,5 +1,6 @@
 import React from 'react';
 import DefaultLayout from '../layouts/Default';
+import API from '../../helpers/API';
 import axios from 'axios';
 import { Table } from 'reactstrap';
 
@@ -63,7 +64,7 @@ export default class ShowUser extends React.Component {
 
   render() {
     return (
-      <div>
+      <DefaultLayout>
         <img src= {this.state.photo}/>
         <p>Name: {this.state.user.name}</p>
         <Table>
@@ -83,7 +84,7 @@ export default class ShowUser extends React.Component {
         <p>{`Consent: ${this.state.user.consent}`}</p>
         <p>{`Birthday: ${this.state.user.birthday}`}</p>
         <p>{`Address: ${this.state.user.address}`}</p>
-      </div>
+      </DefaultLayout>
     );
   }
 }
