@@ -7,19 +7,25 @@ export default class ShowBike extends React.Component {
     super(props);
     this.state = {
       bike: {
-        serialNumber: 123,
-        brand: null,
-        colour: null,
-        frameSize: null,
-        tireSize: null,
-        tirePressure: null,
-        numberOfGears: null,
-        bellOrHorn: null,
-        frontReflector: null,
-        backReflector: null,
-        lights: null,
-        status: null,
-        photos: null
+        data: {
+          BellHorn: null,
+          BikeLabel: null,
+          Brand: null,
+          Class: null,
+          Colour: null,
+          Description: null,
+          GearCount: null,
+          ID_Bike: null,
+          ID_Status: null,
+          Lights: null,
+          Reflectors: null,
+          SerialNumber: 123,
+          TireMaxPSI: null,
+          TireSize: null,
+          history: null,
+          photos: null
+
+        }
       }
     }
   }
@@ -30,7 +36,8 @@ export default class ShowBike extends React.Component {
     console.log('id', id)
     API.get(`bikes/${id}`).then(data => {
       console.log(data)
-      this.setState({ bike: data })
+      this.setState({ bike: data})
+      // console.log(this.state.bike.data.SerialNumber)
     })
   }
 
@@ -52,51 +59,48 @@ export default class ShowBike extends React.Component {
           <tbody>
             <tr>
               <td>Serial Number</td>
-              <td>{`${this.state.bike.serialNumber}`}</td>
+              {/* <td>{`${this.state.bike.serialNumber}`}</td> */}
+              <td>{`${this.state.bike.data.SerialNumber}`}</td>
             </tr>
             <tr>
               <td>Brand</td>
-              <td>{`${this.state.bike.brand}`}</td>
+              <td>{`${this.state.bike.data.Brand}`}</td>
             </tr>
             <tr>
               <td>Colour</td>
-              <td>{`${this.state.bike.colour}`}</td>
+              <td>{`${this.state.bike.data.Color}`}</td>
             </tr>
             <tr>
-              <td>Frame Size</td>
-              <td>{`${this.state.bike.frameSize}`}</td>
+              <td>Frame Class</td>
+              <td>{`${this.state.bike.data.Class}`}</td>
             </tr>
             <tr>
               <td>Tire Size</td>
-              <td>{`${this.state.bike.tireSize}`}</td>
+              <td>{`${this.state.bike.data.TireSize}`}</td>
             </tr>
             <tr>
               <td>Tire Pressure</td>
-              <td>{`${this.state.bike.tirePressure}`}</td>
+              <td>{`${this.state.bike.data.TireMaxPSI}`}</td>
             </tr>
             <tr>
               <td>Number of Gears</td>
-              <td>{`${this.state.bike.numberOfGears}`}</td>
+              <td>{`${this.state.bike.data.GearCount}`}</td>
             </tr>
             <tr>
               <td>Bell or Horn</td>
-              <td>{`${this.state.bike.bellOrHorn}`}</td>
+              <td>{`${this.state.bike.data.BellHorn}`}</td>
             </tr>
             <tr>
-              <td>Front Reflector</td>
-              <td>{`${this.state.bike.frontReflector}`}</td>
-            </tr>
-            <tr>
-              <td>Back Reflector</td>
-              <td>{`${this.state.bike.backReflector}`}</td>
+              <td>Reflectors</td>
+              <td>{`${this.state.bike.data.Reflectors}`}</td>
             </tr>
             <tr>
               <td>Lights</td>
-              <td>{`${this.state.bike.lights}`}</td>
+              <td>{`${this.state.bike.data.Lights}`}</td>
             </tr>
             <tr>
               <td>Status</td>
-              <td>{`${this.state.bike.status}`}</td>
+              <td>{`${this.state.bike.data.Status}`}</td>
             </tr>
 
           </tbody>
