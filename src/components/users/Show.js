@@ -20,9 +20,9 @@ export default class ShowUser extends React.Component {
           Phone: null, 
           PostalCode: null,
           Role: null, 
-          history:null,
           photos:null,
-          PhotoConsent: null //boolean -- did they give consent for photos to be published
+          PhotoConsent: null, //boolean -- did they give consent for photos to be published
+          dependents: null, //array of user records that have ParentId = this.user.data.ID_User
         }
       }, 
       bikes: {
@@ -31,7 +31,8 @@ export default class ShowUser extends React.Component {
               BikeLabel: null,
               Class: null,
               overDue: null,
-              dueDate: null}]
+              history:[{DueDateTime:null}]
+              }]
         }
       }
     }
@@ -43,15 +44,15 @@ export default class ShowUser extends React.Component {
       
       //get bikes that are On Loan to the User with id
       //ID_Status = 3 = On Loan
-      API.get(`bikes`, {'filters[ID_User]': id, /*'filters[ID_Status]':3 */ }).then(data => {
+      API.get(`bikes`, {'filters[ID_User]': id, 'filters[ID_Status]':3  }).then(data => {
         console.log(data)
         this.setState({bikes: data})
         console.log(this.state.bikes.data.data);
 
       })
-      API.get(`users/${id}`).then(userData => {
-        console.log(userData)
-        this.setState({user: userData});
+      API.get(`users/${id}`).then(data => {
+        console.log(data)
+        this.setState({user: data});
       })
     }
 
@@ -65,7 +66,7 @@ export default class ShowUser extends React.Component {
     }
 
 
-  getTableRows(){
+  getTableRowsBikesOut(){
     if(this.getNumBikesOut() > 0) {
       //Write table row for each bike loaned to user/user's children
 
@@ -73,7 +74,7 @@ export default class ShowUser extends React.Component {
         return <tr>
           <td>{element.BikeLabel}</td>
           <td>{element.overDue}</td>
-          <td>{element.dueDate}</td>
+          <td>{element.history[0].DueDateTime}</td>
         </tr>;
       })
     }
@@ -85,6 +86,10 @@ export default class ShowUser extends React.Component {
               </tr>;
     }
   }
+
+  // getTableRowsChildren(){
+  //   if(this)
+  // }
 
   render() {
     return (
@@ -100,7 +105,7 @@ export default class ShowUser extends React.Component {
               <th>OverDue?</th>
               <th>Due Date</th>
             </tr>
-            {this.getTableRows()}
+            {this.getTableRowsBikesOut()}
           </tbody>
         </Table>
         <table>
@@ -120,6 +125,14 @@ export default class ShowUser extends React.Component {
             <tr>
               <td>Postal Code</td>
               <td>{`${this.state.user.data.PostalCode}`}</td>
+            </tr>
+            <tr>
+              <td>Children Under 18</td>
+              {/* <table>
+                <tbody>
+                  { {this.getTableRowsChildren()} }
+                </tbody>
+              </table> */}
             </tr>
             <tr>
               <td>Photo Consent</td>

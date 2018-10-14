@@ -2,7 +2,7 @@ import React from 'react';
 import JsBarcode from 'jsbarcode'
 import { Table } from 'reactstrap';
 import { labels } from "../../helpers/localization";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback, Container } from "reactstrap";
 import DefaultLayout from '../layouts/Default';
 import API from '../../helpers/API';
 
@@ -39,26 +39,123 @@ export default class ShowBike extends React.Component {
     // fetch bike record from api using id
     console.log('id', id)
     API.get(`bikes/${id}`).then(data => {
-      this.setState({ bike: data})
+      this.setState({ bike: data })
       // console.log(this.state.bike.data.SerialNumber)
     })
     JsBarcode("#bike-barcode", `${id}OK`, { height: 50, width: 3, text: id })
   }
 
   getStatus() {
-    if(this.state.bike.data.Status = "undefined") {
+    if (this.state.bike.data.Status = "undefined") {
       console.log("State is undefined")
-      // return <FormGroup check>
-      //       <Label check>
-      //         <Input
-      //           type="checkbox"
-      //           id="Reflectors"
-      //           name="Reflectors"
-      //           checked={this.state.bike.data.Reflectors}
-      //         />{" "}
-      //         {/* {labels.reflectors()} */}
-      //       </Label>
-      //     </FormGroup>
+      return <Container>
+        <h1>Repair Items</h1>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="gears"
+              name="gears"
+              checked={this.state.bike.data.Gears}
+            />{" "}
+            {labels.gears}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="tires"
+              name="tires"
+              checked={this.state.bike.data.Gears}
+            />{" "}
+            Tires
+            {labels.tires}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="brakes"
+              name="brakes"
+              checked={this.state.bike.data.Brakes}
+            />{" "}
+            Brakes
+            {labels.brakes}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="seat"
+              name="seat"
+              checked={this.state.bike.data.Seat}
+            />{" "}
+            Seat
+            {labels.seat}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="handlebar"
+              name="handlebar"
+              checked={this.state.bike.data.Handlebar}
+            />{" "}
+            Handle Bar
+            {labels.handlebar}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="frame"
+              name="frame"
+              checked={this.state.bike.data.Frame}
+            />{" "}
+            Frame
+            {labels.frame}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="reflectors"
+              name="reflectors"
+              checked={this.state.bike.data.Reflectors}
+            />{" "}
+            {labels.reflectors}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="lights"
+              name="lights"
+              checked={this.state.bike.data.Lights}
+            />{" "}
+            {labels.lights}
+          </Label>
+        </FormGroup>
+        <FormGroup check>
+          <Label check>
+            <Input
+              type="checkbox"
+              id="kickstand"
+              name="kickstand"
+              checked={this.state.bike.data.kickstand}
+            />{" "}
+            Kickstand
+            {labels.kickstand}
+          </Label>
+        </FormGroup>
+      </Container>
     }
     else {
     }
@@ -95,7 +192,7 @@ export default class ShowBike extends React.Component {
                 <td>{`${this.state.bike.data.Color}`}</td>
               </tr>
               <tr>
-                <td>Frame Class</td>
+                <td>Bike Class</td>
                 <td>{`${this.state.bike.data.Class}`}</td>
               </tr>
               <tr>
@@ -115,12 +212,12 @@ export default class ShowBike extends React.Component {
                 <td>{`${this.state.bike.data.Status}`}</td>
               </tr>
 
-              {this.getStatus()}
 
             </tbody>
           </Table>
         </div>
 
+        {this.getStatus()}
       </DefaultLayout>
     );
   }
