@@ -1,4 +1,5 @@
 import React from 'react';
+import DefaultLayout from '../layouts/Default';
 import axios from 'axios';
 import { Table } from 'reactstrap';
 
