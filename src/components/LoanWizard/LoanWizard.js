@@ -3,12 +3,13 @@ import React from 'react';
 import DefaultLayout from '../layouts/Default';
 import SelectUser from './SelectUser';
 import LoanInfo from './LoanInfo';
+import LoanPhoto from './LoanPhoto';
 
 export default class LoanWizard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 3,
+      step:4 1
       selectedUser: null,
       sekectedBike: null
     }
@@ -23,7 +24,7 @@ export default class LoanWizard extends React.Component {
       step: 3
     });
   }
-
+  
   selectBike(bike) {
     const prevState = Object.assign({}, this.state);
 
@@ -59,11 +60,12 @@ export default class LoanWizard extends React.Component {
         break;
       case 3:
         output = <LoanInfo
+          borrower={`${this.state.selectedUser.FirstName} ${this.state.selectedUser.LastName}`}
           onSelect={(bike) => this.selectBike(bike)}
         />;
         break;
       case 4:
-        output = "Step 4";
+        output = <LoanPhoto />;
         break;
       default: break;
     }
