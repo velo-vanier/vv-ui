@@ -4,12 +4,13 @@ import DefaultLayout from '../layouts/Default';
 import SelectUser from './SelectUser';
 import LoanInfo from './LoanInfo';
 import LoanPhoto from './LoanPhoto';
+import NewUserForm from '../users/NewUserForm';
 
 export default class LoanWizard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      step:4 1
+      step: 1,
       selectedUser: null,
       sekectedBike: null
     }
@@ -24,7 +25,7 @@ export default class LoanWizard extends React.Component {
       step: 3
     });
   }
-  
+
   selectBike(bike) {
     const prevState = Object.assign({}, this.state);
 
@@ -32,6 +33,13 @@ export default class LoanWizard extends React.Component {
       ...prevState,
       selectedBike: bike,
       step: 4
+    });
+  }
+
+  userCreated(newUser) {
+    this.setState({
+      selectedUser: newUser,
+      step: 3
     });
   }
 
@@ -56,7 +64,8 @@ export default class LoanWizard extends React.Component {
         />
         break;
       case 2:
-        output = "Create User";
+        output = <NewUserForm
+          OnUserCreated={u => this.userCreated(u)} />;
         break;
       case 3:
         output = <LoanInfo

@@ -120,6 +120,7 @@ class LoanInfo extends React.Component {
           </div>))}
           <LookupSelect
             entity="bikes"
+            apiParams={{"filters[ID_Status]": "2"}}
             placeholder={labels.searchBikePlaceholder}
             onSelect={(bike) => this.selectBike(bike)}
             renderItem={bike =>
