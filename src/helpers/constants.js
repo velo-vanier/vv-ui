@@ -1,3 +1,5 @@
+export const API_BASE_URL = 'http://a2be0981.ngrok.io/api'
+
 export const STATUSES_EN = {
     2: 'Available',
     3: 'On loan',

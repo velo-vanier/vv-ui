@@ -1,7 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import { API_BASE_URL } from './constants';
 
-const API_BASE_URL = 'http://eb66bc8f.ngrok.io/api'
 
 export default class API {
     static get(resource, params={}) {

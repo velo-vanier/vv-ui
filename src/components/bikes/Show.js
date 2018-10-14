@@ -42,7 +42,7 @@ export default class ShowBike extends React.Component {
       this.setState({ bike: data})
       // console.log(this.state.bike.data.SerialNumber)
     })
-    JsBarcode("#bike-barcode", id, { height: 50, width: 2 })
+    JsBarcode("#bike-barcode", `${id}OK`, { height: 50, width: 3, text: id })
   }
 
   getStatus() {
