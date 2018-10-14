@@ -17,7 +17,7 @@ const DefaultLayout = props => {
   return (
     <div style={styles.container}>
       <Navigation />
-      <div className="container py-4" style={styles.innerContainer}>
+      <div className="p-4" style={styles.innerContainer}>
         {props.children}
       </div>
       <Footer />

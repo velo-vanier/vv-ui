@@ -20,6 +20,17 @@ export const STATUSES_FR = {
     9: 'Give away',
 }
 
+export const STATUSES_COLORS = {
+    2: 'success',
+    3: 'info',
+    4: 'dark',
+    5: 'warning',
+    6: 'danger',
+    7: 'secondary',
+    8: 'secondary',
+    9: 'secondary',
+}
+
 export const BIKE_CLASSES_EN = {
     'C': 'C - Child',
     'Y': 'Y - Youth',
