@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://a2be0981.ngrok.io/api'
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const STATUSES_EN = {
     2: 'Available',
