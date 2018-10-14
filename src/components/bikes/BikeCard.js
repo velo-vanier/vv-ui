@@ -16,7 +16,7 @@ import {
 const BikeCard = props => {
   const { bike } = props;
   console.log(bike)
-  const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://placekitten.com/318/180";
+  const photoSrc = (bike.photos && !!bike.photos.length) ? bike.photos[0].url : "https://img02.aws.kooomo-cloud.com/upload/denver-bike/images/17285_medium.jpg?v=1";
   return (
     <Col xs="12" sm="6" md="4" className="my-2">
       <Card>
