@@ -20,7 +20,7 @@ export default class ShowUser extends React.Component {
           Phone: null, 
           PostalCode: null,
           Role: null, 
-          photos:null,
+          photos:[{url:"https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2017/03/cat-tongue_AdobeStock_70141743-1024x719.jpeg"}],
           PhotoConsent: null, //boolean -- did they give consent for photos to be published
           dependents: null, //array of user records that have ParentId = this.user.data.ID_User
         }
@@ -56,11 +56,6 @@ export default class ShowUser extends React.Component {
       })
     }
 
-    getPhoto(){
-      if(this.state.user.data.photos){
-        return this.state.user.data.photos[0];
-      }
-    }
     getNumBikesOut(){
       return this.state.bikes.data.data.length;
     }
@@ -92,10 +87,11 @@ export default class ShowUser extends React.Component {
   // }
 
   render() {
+    const photoSrc = (this.state.user.data.photos && !!this.state.user.data.photos.length) ? this.state.user.data.photos[0].url : "https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2017/03/cat-tongue_AdobeStock_70141743-1024x719.jpeg";
     return (
       <DefaultLayout>
         <h2>{`${this.state.user.data.FirstName} ${this.state.user.data.LastName}`}</h2>
-        <img src= {this.getPhoto()}/>
+        <img src= {photoSrc} alt={this.state.user.data.FirstName} width='400px'/>
         <p>{this.state.user.FirstName} {this.state.user.LastName} </p>
         <h2>Bikes Loaned</h2>
         <Table>
