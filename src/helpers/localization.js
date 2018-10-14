@@ -19,9 +19,11 @@ export const switchLanguage = () => setLocalization(getLocalization() === ENGLIS
 
 const EnglishLabels = {
   projectTitle: 'Velo-Vanier',
+  loan: 'Loan a Bike',
+  borrower: 'Emprunteur',
   chooseImage: 'Choose Image',
   bikes: 'Bikes',
-  createNewUser: 'Create new user',
+  createNewUser: 'Add New Borrower',
   selecUser: 'Selec user',
   next: 'Next',
   searchUserPlaceholder: 'Search by name, email, or phone number...',
@@ -67,10 +69,13 @@ const EnglishLabels = {
 //please translate to French
 const FrenchLabels = {
   projectTitle: 'Velo-Vanier',
+  loan: 'Emprunter un vélo',
+  borrower: 'Emprunteur',
+  createNewUser: 'Ajouter un nouvel emprunteur',
   chooseImage: 'Choose Image',
   bikes: 'Vélos',
   lang: 'En',
-  newBikeTitle: `Add a bike`,
+  newBikeTitle: `Ajouter un nouveau vélo`,
   serialNumber: `Le numéro de série`,
   brand: `Marque`,
   colour: `Couleur`,
@@ -87,7 +92,7 @@ const FrenchLabels = {
   description: `Description`,
   reflectors: `Réflecteurs`,
   lights: `Lumières`,
-  scanBarcode: `Scan Barcode`,
+  scanBarcode: `Scanner le code à barres`,
 
   statusLabel: id => STATUSES_FR[id],
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
