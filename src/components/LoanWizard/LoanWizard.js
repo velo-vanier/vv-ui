@@ -9,9 +9,9 @@ export default class LoanWizard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      step:4 1
+      step:4,
       selectedUser: null,
-      sekectedBike: null
+      selectedBike: null
     }
   }
 
@@ -24,7 +24,7 @@ export default class LoanWizard extends React.Component {
       step: 3
     });
   }
-  
+
   selectBike(bike) {
     const prevState = Object.assign({}, this.state);
 
