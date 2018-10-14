@@ -57,7 +57,12 @@ export default class ShowUser extends React.Component {
     }
 
     getNumBikesOut(){
-      return this.state.bikes.data.data.length;
+      if(this.state.bikes.data.data && !!this.state.bikes.data.data.length){
+        return this.state.bikes.data.data.length;
+      }
+      else{
+        return 0;
+      }
     }
 
 
@@ -106,45 +111,50 @@ export default class ShowUser extends React.Component {
         <h2>{`${this.state.user.data.FirstName} ${this.state.user.data.LastName}`}</h2>
         <img src= {photoSrc} alt={this.state.user.data.FirstName} width='400px'/>
         <p>{this.state.user.FirstName} {this.state.user.LastName} </p>
-        <h2>Bikes Loaned</h2>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>Bike Label</th>
-              <th>OverDue?</th>
-              <th>Due Date</th>
-            </tr>
-            {this.getTableRowsBikesOut()}
-          </tbody>
-        </table>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>Phone</td>
-              <td>{`${this.state.user.data.Phone}`}</td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>{`${this.state.user.data.Email}`}</td>
-            </tr>
-            <tr>
-              <td>Address</td>
-              <td>{`${this.state.user.data.Address}`}</td>
-            </tr>
-            <tr>
-              <td>Postal Code</td>
-              <td>{`${this.state.user.data.PostalCode}`}</td>
-            </tr>
-            <tr>
-              <td>Children Under 18</td>
-                {this.getTableRowsChildren()}
-            </tr>
-            <tr>
-              <td>Photo Consent</td>
-              <td>{`${this.state.user.data.PhotoConsent}`}</td>
-            </tr>
-          </tbody>
-        </table>         
+        <div>
+          <h2>Bikes Loaned</h2>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>Bike Label</th>
+                <th>OverDue?</th>
+                <th>Due Date</th>
+              </tr>
+              {this.getTableRowsBikesOut()}
+            </tbody>
+          </table>
+        </div>
+        <div style={{height:"40px"}}></div>
+        <div>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Phone</td>
+                <td>{`${this.state.user.data.Phone}`}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{`${this.state.user.data.Email}`}</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>{`${this.state.user.data.Address}`}</td>
+              </tr>
+              <tr>
+                <td>Postal Code</td>
+                <td>{`${this.state.user.data.PostalCode}`}</td>
+              </tr>
+              <tr>
+                <td>Children Under 18</td>
+                  {this.getTableRowsChildren()}
+              </tr>
+              <tr>
+                <td>Photo Consent</td>
+                <td>{`${this.state.user.data.PhotoConsent}`}</td>
+              </tr>
+            </tbody>
+          </table>         
+        </div>
       </DefaultLayout>
     );
   }
