@@ -2,6 +2,7 @@ import React from 'react';
 import DefaultLayout from '../layouts/Default'
 import API from '../../helpers/API'
 import BikeCard from './BikeCard'
+import SearchAndFilter from './SearchAndFilter'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const PaginationButtons = props => {
@@ -58,15 +59,27 @@ export default class BikeIndex extends React.Component {
     this.setState({ page: num }, this.fetchBikes)
   }
 
+  updateBikeParams = (searchParams) => {
+    this.setState({ searchParams: searchParams })
+  }
+
   render() {
     return (
       <DefaultLayout>
         <div className="row">
-          {
-            this.state.bikes.map(bike => {
-              return <BikeCard key={bike.BikeLabel} bike={bike} />
-            })
-          }
+          <div className="col-md-3">
+            <SearchAndFilter updateSearchParams={this.updateBikeParams} />
+          </div>
+
+          <div className="col-md-9">
+            <div className="row">
+              {
+                this.state.bikes.map(bike => {
+                  return <BikeCard key={bike.BikeLabel} bike={bike} />
+                })
+              }
+            </div>
+          </div>
         </div>
         <PaginationButtons pages={this.state.pages} goToPage={this.goToPage} currentPage={this.state.page} />
       </DefaultLayout>
