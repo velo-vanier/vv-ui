@@ -245,7 +245,7 @@ export default class NewBikeForm extends React.Component {
             <Label for="bikeClass">{labels.bikeClass}</Label>
             <Input type="select" name="bikeClass" id="bikeClass" onChange={this.updateBike('Class')} value={bike.Class} invalid={Boolean(errors.Class)}>
               {Object.keys(bikeClasses).map((id) => {
-                return <option key={`status-${id}`} value={id}>{bikeClasses[id]}</option>;
+                return <option key={`bikeClass-${id}`} value={id}>{bikeClasses[id]}</option>;
               })}
             </Input>
             {
@@ -264,7 +264,7 @@ export default class NewBikeForm extends React.Component {
             </Input>
             {
               (errors.Class) &&
-              <FormFeedback>{errors.Class.join(' ')}</FormFeedback>
+              <FormFeedback>{errors.ID_Status.join(' ')}</FormFeedback>
             }
           </FormGroup>
 

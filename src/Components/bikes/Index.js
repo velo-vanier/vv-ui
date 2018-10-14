@@ -1,6 +1,40 @@
 import React from 'react';
 import DefaultLayout from '../layouts/Default'
 import API from '../../helpers/API'
+import BikeCard from './BikeCard'
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+
+const PaginationButtons = props => {
+    const next = props.currentPage + 1
+    const prev = props.currentPage - 1
+    return (
+      <div className="row justify-content-center">
+        <Pagination aria-label="Page navigation bikes">
+          {
+            props.currentPage > 1 &&
+            <PaginationItem>
+              <PaginationLink previous href="#" onClick={() => props.goToPage(prev)} />
+            </PaginationItem>
+          }
+          {
+            [...Array(props.pages).keys()].map(page => (
+              <PaginationItem key={`page-${page}`} active={page === props.currentPage}>
+                <PaginationLink href="#" onClick={() => props.goToPage(page)}>
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))
+          }
+          {
+            props.currentPage < props.pages &&
+            <PaginationItem>
+              <PaginationLink next href="#" onClick={() => props.goToPage(next)} />
+            </PaginationItem>
+          }
+        </Pagination>
+      </div>
+    );
+}
 
 export default class BikeIndex extends React.Component {
   constructor(props) {
@@ -9,20 +43,32 @@ export default class BikeIndex extends React.Component {
   }
 
   componentDidMount() {
-    API.get('bikes', { page: 1 }).then(res => {
-      console.log('data', res)
-      this.setState({ bikes: res.data.data })
+    this.fetchBikes()
+  }
+
+  fetchBikes() {
+    console.log('fetch page of bikes', this.state.page)
+    API.get('bikes', { page: this.state.page }).then(res => {
+      console.log(res)
+      this.setState({ bikes: res.data.data, page: res.data.current_page, pages: res.data.last_page })
     })
+  }
+
+  goToPage = num => {
+    this.setState({ page: num }, this.fetchBikes)
   }
 
   render() {
     return (
       <DefaultLayout>
-        {
-          this.state.bikes.map(bike => {
-            return JSON.stringify(bike)
-          })
-        }
+        <div className="row">
+          {
+            this.state.bikes.map(bike => {
+              return <BikeCard key={bike.BikeLabel} bike={bike} />
+            })
+          }
+        </div>
+        <PaginationButtons pages={this.state.pages} goToPage={this.goToPage} currentPage={this.state.page} />
       </DefaultLayout>
     );
   }
