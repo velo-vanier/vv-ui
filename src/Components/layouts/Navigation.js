@@ -7,6 +7,7 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
+  import {switchLanguage, labels} from '../../helpers/localization';
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -30,7 +31,10 @@ export default class Navigation extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/bikes">Bikes</NavLink>
+              <NavLink href="/bikes">{labels.bikes}</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/loan">Loan</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/bikes/new">Add a bike</NavLink>
@@ -43,6 +47,9 @@ export default class Navigation extends React.Component {
             </NavItem>
             <NavItem>
               <NavLink href="/users">Log in</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" onClick={() => switchLanguage()}>{labels.lang}</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
