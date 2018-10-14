@@ -69,7 +69,7 @@ export default class ShowBike extends React.Component {
       <DefaultLayout>
         <div className="container">
         <div className="justify-content-left">
-        <h1><span class="label label-default">Bike Profile</span></h1>
+        <h1><span class="label label-default">{labels.profileBike}</span></h1>
         <img id="bike-barcode" alt="barcode"></img>
         </div>
           <div className="col-6 col-md-3">
