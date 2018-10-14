@@ -1,79 +1,94 @@
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import React, { Component } from 'react';
+import { Col, Button, Form, FormGroup, FormFeedback, Label, Input } from 'reactstrap';
+import DefaultLayout from "../layouts/Default";
+import Children from './Children';
 
-export default class NewUserForm extends React.Component {
+export default class NewUserForm extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      children: [{ name: '' , age: ''}],
+    }
+  }
+  handleAddChild = () => {
+    this.setState({
+      name: '',
+      children: this.state.children.concat([{ name: '', age: '' }])
+    });
+  }
+  handleSubmit = () => {
+    alert('here!');
+  }
   render() {
     return (
-      <Form>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input type="email" name="email" id="email" placeholder="user@example.com" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <Input type="select" name="select" id="exampleSelect">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelectMulti">Select Multiple</Label>
-          <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleText">Text Area</Label>
-          <Input type="textarea" name="text" id="exampleText" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleFile">File</Label>
-          <Input type="file" name="file" id="exampleFile" />
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-          </FormText>
-        </FormGroup>
-        <FormGroup tag="fieldset">
-          <legend>Radio Buttons</legend>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option one is this and that—be sure to include why it's great
-            </Label>
+      <DefaultLayout>
+        <Form>
+          <FormGroup row>
+            <Label for="fname" sm={2}>Full Name</Label>
+            <Col sm={10}>
+              <Input type="text" name="fname" id="fname" placeholder="Full Name"/>
+              <FormFeedback>Full Name required!</FormFeedback>
+            </Col>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option two can be something else and selecting it will deselect option one
-            </Label>
+          <FormGroup row>
+            <Label for="phNumber" sm={2}>Phone Number</Label>
+            <Col sm={10}>
+              <Input type="number" name="phNumber" id="phNumber" placeholder="1234567890" />
+            </Col>
           </FormGroup>
-          <FormGroup check disabled>
-            <Label check>
-              <Input type="radio" name="radio1" disabled />{' '}
-              Option three is disabled
-            </Label>
+          <FormGroup row>
+            <Label for="email" sm={2}>Email</Label>
+            <Col sm={10}>
+              <Input type="email" name="email" id="email" placeholder="joe@example.com" />
+            </Col>
           </FormGroup>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input type="checkbox" />{' '}
-            Check me out
-          </Label>
-        </FormGroup>
-        <Button>Submit</Button>
-      </Form>
+          <FormGroup row>
+            <Label for="address" sm={2}>Address</Label>
+            <Col sm={10}>
+              <Input type="textarea" name="address" id="address" placeholder="Address"/>
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="postalCode" sm={2}>Postal Code</Label>
+            <Col sm={10}>
+              <Input type="text" name="postalCode" id="postalCode" placeholder="Must start with K1L" />
+            </Col>
+          </FormGroup>
+          <FormGroup tag="fieldset">
+            <legend>Children Under 18</legend>
+              {this.state.children.map((child, idx) => {
+                return <Children
+                  name={child.name}
+                  age={child.age}
+                />
+              })}
+            <br/ >
+            <Col sm={10}>
+              <Button color="primary" outline onClick={this.handleAddChild}>
+                Add Child
+              </Button>
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="consent" sm={2}>Agree to have picture used online</Label>
+            <Col sm={{ size: 10 }}>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" id="consent" />{' '}
+                </Label>
+              </FormGroup>
+            </Col>
+          </FormGroup>
+          <FormGroup check row>
+            <Col sm={{ size: 10, offset: 2 }}>
+              <Button
+                onChange={this.handleSubmit}
+              >Submit</Button>
+            </Col>
+          </FormGroup>
+        </Form>
+      </DefaultLayout>
     );
   }
 }
