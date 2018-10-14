@@ -52,6 +52,12 @@ const EnglishLabels = {
   description: `Description`,
   reflectors: `Reflectors`,
   scanBarcode: `Scan Barcode`,
+  loanDate: 'Loan Date',
+  returnDate: 'Return Date',
+  helmet: 'Helmet',
+  locks: 'Locks',
+  addLock: '+ Add another lock',
+  lockPlaceholder: "Lock Code",
 
   statusLabel: id => STATUSES_EN[id],
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,
