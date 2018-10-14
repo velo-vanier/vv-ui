@@ -82,9 +82,22 @@ export default class ShowUser extends React.Component {
     }
   }
 
-  // getTableRowsChildren(){
-  //   if(this)
-  // }
+  getTableRowsChildren(){
+    if(this.state.user.data.dependents && !!this.state.user.data.dependents.length){
+      return this.state.user.data.dependents.map(function(element){
+        return <tr>
+                  <td>{element.FirstName}</td>
+                  <td>{element.LastName}</td>
+                </tr>;
+      })
+    }
+    else{
+      return <tr>
+      <td>No Children</td>
+      <td></td>
+      </tr>
+    } 
+  }
 
   render() {
     const photoSrc = (this.state.user.data.photos && !!this.state.user.data.photos.length) ? this.state.user.data.photos[0].url : "https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2017/03/cat-tongue_AdobeStock_70141743-1024x719.jpeg";
@@ -94,7 +107,7 @@ export default class ShowUser extends React.Component {
         <img src= {photoSrc} alt={this.state.user.data.FirstName} width='400px'/>
         <p>{this.state.user.FirstName} {this.state.user.LastName} </p>
         <h2>Bikes Loaned</h2>
-        <Table>
+        <table class="table">
           <tbody>
             <tr>
               <th>Bike Label</th>
@@ -103,8 +116,8 @@ export default class ShowUser extends React.Component {
             </tr>
             {this.getTableRowsBikesOut()}
           </tbody>
-        </Table>
-        <table>
+        </table>
+        <table class="table">
           <tbody>
             <tr>
               <td>Phone</td>
@@ -124,11 +137,7 @@ export default class ShowUser extends React.Component {
             </tr>
             <tr>
               <td>Children Under 18</td>
-              {/* <table>
-                <tbody>
-                  { {this.getTableRowsChildren()} }
-                </tbody>
-              </table> */}
+                {this.getTableRowsChildren()}
             </tr>
             <tr>
               <td>Photo Consent</td>
