@@ -32,7 +32,7 @@ const BikeCard = props => {
           <CardText>
             {labels.bikeClassLabels[bike.Class]}
           </CardText>
-          <Button className="mr-1" color="primary" href={`/bikes/${bike.ID_Bike}`}>Return this bike</Button>
+          <Button className="mr-1" color="primary" href={`/bikes/${bike.ID_Bike}`}>Loan this bike</Button>
           <Button className="mr-1" color="primary" outline href={`/bikes/${bike.ID_Bike}`}>View</Button>
         </CardBody>
       </Card>
