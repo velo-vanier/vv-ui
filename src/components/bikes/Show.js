@@ -176,6 +176,7 @@ export default class ShowBike extends React.Component {
   }
 
   render() {
+    const photoSrc = (this.state.bike.data.photos && !!this.state.bike.data.photos.length) ? this.state.bike.data.photos[0].url : "https://img02.aws.kooomo-cloud.com/upload/denver-bike/images/17285_medium.jpg?v=1";
     return (
       <DefaultLayout>
         <div className="row justify-content-end">
@@ -184,7 +185,7 @@ export default class ShowBike extends React.Component {
         <div className="row">
           <div className="col-6 col-md-3">
             <a href="#" className="thumbnail">
-              <img src="..." alt="..."></img>
+              <img src={photoSrc} alt={this.state.bike.data.Brand}></img>
             </a>
           </div>
         </div>
