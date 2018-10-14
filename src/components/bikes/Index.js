@@ -4,13 +4,16 @@ import DefaultLayout from '../layouts/Default'
 import API from '../../helpers/API'
 import BikeCard from './BikeCard'
 import SearchAndFilter from './SearchAndFilter'
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Pagination, PaginationItem, PaginationLink, Row, Col } from 'reactstrap';
 
 const PaginationButtons = props => {
-    const next = props.currentPage + 1
-    const prev = props.currentPage - 1
+    const next = props.currentPage + 1;
+    const prev = props.currentPage - 1;
+    let pageNums = [...Array(props.pages).keys()];
+    pageNums.shift();
+
     return (
-      <div className="row justify-content-center">
+      <Row className="justify-content-center">
         <Pagination aria-label="Page navigation bikes">
           {
             props.currentPage > 1 &&
@@ -19,7 +22,7 @@ const PaginationButtons = props => {
             </PaginationItem>
           }
           {
-            [...Array(props.pages).keys()].map(page => (
+            pageNums.map(page => (
               <PaginationItem key={`page-${page}`} active={page === props.currentPage}>
                 <PaginationLink href="#" onClick={() => props.goToPage(page)}>
                   {page}
@@ -34,7 +37,7 @@ const PaginationButtons = props => {
             </PaginationItem>
           }
         </Pagination>
-      </div>
+      </Row>
     );
 }
 
@@ -73,21 +76,21 @@ export default class BikeIndex extends React.Component {
   render() {
     return (
       <DefaultLayout>
-        <div className="row">
-          <div className="col-md-3">
+        <Row>
+          <Col md="3">
             <SearchAndFilter updateSearchParams={this.updateBikeParams} />
-          </div>
+          </Col>
 
-          <div className="col-md-9">
-            <div className="row">
+          <Col md="9">
+            <Row>
               {
                 this.state.bikes.map(bike => {
                   return <BikeCard key={bike.BikeLabel} bike={bike} />
                 })
               }
-            </div>
-          </div>
-        </div>
+            </Row>
+          </Col>
+        </Row>
         <PaginationButtons pages={this.state.pages} goToPage={this.goToPage} currentPage={this.state.page} />
       </DefaultLayout>
     );
