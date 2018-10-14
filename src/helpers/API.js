@@ -22,7 +22,7 @@ export default class API {
             axios
                 .post(url, data)
                 .then(res => resolve({ data: res.data, status: res.status }))
-                .catch(err => reject(err))
+                .catch(err => reject({ errors: err.response.data, status: err.response.status }))
         })
     }
 
