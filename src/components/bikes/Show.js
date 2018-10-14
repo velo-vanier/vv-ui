@@ -176,18 +176,18 @@ export default class ShowBike extends React.Component {
   }
 
   render() {
-    const photoSrc = (this.state.bike.data.photos && !!this.state.bike.data.photos.length) ? this.state.bike.data.photos[0].url : "https://img02.aws.kooomo-cloud.com/upload/denver-bike/images/17285_medium.jpg?v=1";
+    const photoSrc = (this.state.bike.data.photos && !!this.state.bike.data.photos.length) ? this.state.bike.data.photos[0].url : "https://travelwithkitties.com/wp-content/uploads/2018/09/Funny-Animals-On-Bike-nice-cat.jpg";
     return (
       <DefaultLayout>
-        <div className="row justify-content-end">
-          <img id="bike-barcode" alt="barcode"></img>
-        </div>
         <div className="row">
           <div className="col-6 col-md-3">
             <a href="#" className="thumbnail">
-              <img src={photoSrc} alt={this.state.bike.data.Brand}></img>
+              <img src={photoSrc} alt={this.state.bike.data.Brand} width="400px"></img>
             </a>
           </div>
+        </div>
+        <div className="row justify-content-start">
+          <img id="bike-barcode" alt="barcode"></img>
         </div>
 
         <div>
