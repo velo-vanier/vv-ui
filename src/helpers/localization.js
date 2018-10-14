@@ -25,7 +25,7 @@ const EnglishLabels = {
   chooseImage: 'Choose Image',
   bikes: 'Bikes',
   createNewUser: 'Add New Borrower',
-  selecUser: 'Selec user',
+  selecUser: 'Select user',
   next: 'Next',
   searchUserPlaceholder: 'Search by name, email, or phone number...',
   selecBike: 'Select bike',
