@@ -84,7 +84,7 @@ class LoanInfo extends React.Component {
   changeLock(index, event) {
     const newLocksList = this.state.locks.map((l, i) => {
 
-      return i == index ? event.target.value : l;
+      return i === index ? event.target.value : l;
     });
 
     this.setState({
@@ -101,7 +101,7 @@ class LoanInfo extends React.Component {
   }
 
   next() {
-    if (this.state.bikes.length == 0)
+    if (this.state.bikes.length === 0)
       return;
 
     this.props.onSelect(this.state);
@@ -112,6 +112,7 @@ class LoanInfo extends React.Component {
 
     return (
       <div>
+        <h4>{this.props.borrower}</h4>
         <FormGroup>
           <Label htmlFor="bike">{labels.selecBike}</Label>
           {bikes.map((bike, i) => (<div key={i}>
