@@ -1,5 +1,7 @@
 # Vélo-Vanier bike sharing management system
 
+Development site: http://velo-vanier.s3-website-us-east-1.amazonaws.com/
+
 ## Getting Started
 
 - clone the repo
