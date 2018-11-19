@@ -9,7 +9,7 @@ const NewUserPage = props => {
   return (
     <DefaultLayout>
       <Container>
-        <h1>{labels.createNewUser}</h1>
+        <h1>{labels.createNewBorrower}</h1>
         <NewUserForm {...props} />
       </Container>
     </DefaultLayout>

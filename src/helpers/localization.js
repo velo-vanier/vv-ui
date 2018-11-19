@@ -22,6 +22,7 @@ const EnglishLabels = {
   chooseImage: 'Choose Image',
   bikes: 'Bikes',
   createNewUser: 'Create new user',
+  createNewBorrower: 'Create new borrower',
   firstName: 'First name',
   lastName: 'Last name',
   postalCode: 'Postal Code',
@@ -62,6 +63,7 @@ const EnglishLabels = {
   locks: 'Locks',
   addLock: '+ Add another lock',
   lockPlaceholder: "Lock Code",
+  userRole: `User Role`,
 
   statusLabel: id => STATUSES_EN[id],
   areYouSureToDelete: x => `Are you sure to delete '${x}'?`,

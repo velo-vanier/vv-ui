@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText, FormFeedback } from "reactstrap";
-import DefaultLayout from "../layouts/Default";
+import { Button, Form, FormGroup, Label, Input, FormFeedback } from "reactstrap";
 import { labels } from "../../helpers/localization";
 import API from "../../helpers/API"
 
@@ -30,12 +29,48 @@ export default class NewUserForm extends React.Component {
   };
 
   submit = () => {
-    console.log(this.state.user)
+    let { user } = this.state,
+      formIsValid = true,
+      errors = {};
+
+    if (user.FirstName === '') {
+      formIsValid = false;
+      errors.FirstName = ['The first name field is required.'];
+    }
+
+    if (user.LastName === '') {
+      formIsValid = false;
+      errors.LastName = ['The last name field is required.'];
+    }
+
+    if (user.Email === '') {
+      formIsValid = false;
+      errors.Email = ['The email field is required.'];
+    }
+
+    if (user.Phone === '') {
+      formIsValid = false;
+      errors.Phone = ['The phone field is required.'];
+    }
+
+    if (user.PostalCode === '') {
+      formIsValid = false;
+      errors.PostalCode = ['The postal code field is required.'];
+    }
+    else if (!user.PostalCode.toLowerCase().startsWith('k1l')) {
+      formIsValid = false;
+      errors.PostalCode = ['The postal code should start with K1L.'];
+    }
+
+    if (!formIsValid) {
+      this.setState({ errors: errors })
+      return;
+    }
+
     API
       .post('users', this.state.user)
       .then(res => {
-        console.log(res);
-        if (res.status = 200) {
+        if (res.status === 200) {
           if (this.props.onUserCreated) {
             return this.props.onUserCreated(res.data)
           }
@@ -43,14 +78,13 @@ export default class NewUserForm extends React.Component {
         }
       })
       .catch(res => {
-        console.log('res', res)
+        console.log(res.errors);
         this.setState({ errors: res.errors })
       })
   }
 
   render() {
     const { user, errors } = this.state;
-    console.log('errors', errors)
 
     return (
       <Form onSubmit={this.submit}>
@@ -153,7 +187,7 @@ export default class NewUserForm extends React.Component {
           }
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup style={{ display: 'none' }}>
           <Label for="role">{labels.userRole}</Label>
           <Input type="select" name="role" id="role" onChange={this.updateUser('Role')} value={user.Role} invalid={Boolean(errors.Role)}>
             <option value={'Borrower'}>Borrower</option>
@@ -166,7 +200,9 @@ export default class NewUserForm extends React.Component {
           }
         </FormGroup>
 
-        <Button onClick={this.submit}>Submit</Button>
+        <FormGroup className="text-right">
+          <Button color="success" onClick={this.submit}>Submit</Button>
+        </FormGroup>
       </Form>
     );
   }
@@ -182,7 +218,7 @@ NewUserForm.defaultProps = {
     Password: null,
     ParentID: null,
     CreateDateTime: null,
-    PostalCode: null,
+    PostalCode: "",
     PhotoConsent: null
   }
 };
