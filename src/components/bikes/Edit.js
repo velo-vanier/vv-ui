@@ -5,7 +5,7 @@ import { labels } from "../../helpers/localization";
 import API from "../../helpers/API"
 
 
-export default class EditBikeForm extends React.Component {
+export default class EditBike extends React.Component {
   constructor(props) {
     super(props);
     this.state = { bike: this.props.bike, errors: {}, statuses: [] };
