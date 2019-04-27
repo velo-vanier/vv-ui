@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/home/Home'
 import NewBike from './components/bikes/New'
+import EditBike from './components/bikes/Edit'
 import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
@@ -18,6 +19,7 @@ const Entry = () => (
       <Route path="/loan" component={LoanWizard} />
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
+      <Route path="/bikes/:id/edit" component={EditBike} />
       <Route path="/users/:id" component={ShowUser} />
       <Route path="/users" component={ShowUserList} />
       <Route path="/bikes/" component={BikeIndex} />
