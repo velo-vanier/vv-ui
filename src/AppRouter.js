@@ -6,6 +6,7 @@ import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
 import ShowUser from './components/users/Show'
+import ShowUserList from './components/users/UserList'
 import LoanWizard from "./components/LoanWizard/LoanWizard";
 
 
