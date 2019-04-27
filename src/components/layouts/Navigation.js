@@ -35,7 +35,7 @@ export default class Navigation extends React.Component {
               <NavLink href="/bikes">{labels.bikes}</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/loan">Loan</NavLink>
+              <NavLink href="/loans">Loans</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/bikes/new">Add a bike</NavLink>
