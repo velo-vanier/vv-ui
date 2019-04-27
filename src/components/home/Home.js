@@ -20,7 +20,7 @@ const Home = props => {
             <Container>
                 <Row className="justify-content-center">
                     <Col>
-                        <FormGroup>
+                      /* BARCODE <FormGroup>
                           <Label for="barcode"><h1>{labels.scanBarcode}</h1></Label>
                           <Input
                             type="text"
@@ -29,6 +29,7 @@ const Home = props => {
                             onChange={handleScan}
                           />
                         </FormGroup>
+                        */
                     </Col>
                 </Row>
             </Container>
