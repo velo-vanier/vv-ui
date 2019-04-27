@@ -5,6 +5,7 @@ import LookupSelect from '../common/LookupSelect';
 import API from "../../helpers/API"
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import ImageUploader from 'react-images-upload';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class LoanForm extends React.Component {
@@ -14,7 +15,12 @@ export default class LoanForm extends React.Component {
     this.state = {
       selectedUser: null,
       bikes: [],
-      loanDate: moment()
+      loanDate: moment(),
+      returnDate: moment().add(4, 'w'),//4 weeks
+      helmet: 0,
+      lights: 0,
+      locks: [],
+      picture: null
     }
   }
 
@@ -62,6 +68,58 @@ export default class LoanForm extends React.Component {
     this.setState({ returnDate: date });
   }
 
+  helmetChecked(e) {
+    this.setState({
+      helmet: e.target.checked ? 1 : 0
+    });
+  }
+
+  helmetNumberChange(e) {
+    this.setState({
+      helmet: parseInt(e.target.value)
+    });
+  }
+
+  lightsChecked(e) {
+    this.setState({
+      lights: e.target.checked ? 1 : 0
+    });
+  }
+
+  lightsNumberChange(e) {
+    this.setState({
+      lights: parseInt(e.target.value)
+    });
+  }
+
+  locksChecked(e) {
+    this.setState({
+      locks: e.target.checked ? [''] : []
+    });
+  }
+
+  changeLock(index, event) {
+    const newLocksList = this.state.locks.map((l, i) => {
+
+      return i === index ? event.target.value : l;
+    });
+
+    this.setState({
+      locks: newLocksList
+    })
+  }
+
+  addLock() {
+    const newLocksList = this.state.locks.map(l => l);
+    newLocksList.push('');
+    this.setState({
+      locks: newLocksList
+    })
+  }
+
+  onSelect(picture) {
+    this.setState({ picture: picture[0] });
+  }
 
   render() {
     const { bikes } = this.state;
@@ -126,6 +184,113 @@ export default class LoanForm extends React.Component {
             onChange={date => this.changeReturnDate(date)}
           />
         </FormGroup>
+        <FormGroup>
+          <Container>
+            <Row>
+              <Col xs="6">
+                <Label check>
+                  <Input
+                    type="checkbox"
+                    checked={this.state.helmet > 0}
+                    onChange={e => this.helmetChecked(e)}
+                  />{" "}
+                  {labels.helmet}
+                </Label>
+              </Col>
+              <Col xs="3">
+                {this.state.helmet > 0 &&
+                  <Input
+                    type="select"
+                    value={this.state.helmet}
+                    onChange={e => this.helmetNumberChange(e)}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Input>
+                }
+              </Col>
+            </Row>
+          </Container>
+        </FormGroup>
+        <FormGroup>
+          <Container>
+            <Row>
+              <Col xs="6">
+                <Label check>
+                  <Input
+                    type="checkbox"
+                    checked={this.state.lights > 0}
+                    onChange={e => this.lightsChecked(e)}
+                  />{" "}
+                  {labels.lights}
+                </Label>
+              </Col>
+              <Col xs="3">
+                {this.state.lights > 0 &&
+                  <Input
+                    type="select"
+                    value={this.state.lights}
+                    onChange={e => this.lightsNumberChange(e)}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Input>
+                }
+              </Col>
+            </Row>
+          </Container>
+        </FormGroup>
+        <FormGroup>
+          <Container>
+            <Label check>
+              <Input
+                type="checkbox"
+                checked={this.state.locks.length > 0}
+                onChange={e => this.locksChecked(e)}
+              />{" "}
+              {labels.locks}
+            </Label>
+            {this.state.locks.length > 0 &&
+              <div>
+                {
+                  this.state.locks.map((lock, i) => <FormGroup key={i}>
+                    <Input
+                      type="text"
+                      value={lock}
+                      placeholder={labels.lockPlaceholder}
+                      onChange={e => this.changeLock(i, e)}
+                    />
+                  </FormGroup>)
+                }
+                <Button color="link"
+                  onClick={e => this.addLock(e)}
+                >{labels.addLock}</Button>
+              </div>
+            }
+          </Container>
+        </FormGroup>
+        <ImageUploader
+          withIcon={true}
+          buttonText='Choose images'
+          onChange={p => this.onSelect(p)}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={5242880}
+        />
+        <FormGroup>
+          {this.state.picture &&
+            <img
+              style={{
+                maxWidth: 200,
+                maxHeight: 200
+              }}
+              src={URL.createObjectURL(this.state.picture)}
+            />
+          }
+        </FormGroup>
       </div >
     );
   }
@@ -134,7 +299,7 @@ export default class LoanForm extends React.Component {
   submit() {
     alert('successfully submitted form!!!')
     API
-      .post('loan', this.state.user)
+      .post('loans', this.state.user)
       .then(res => {})
   }
 
