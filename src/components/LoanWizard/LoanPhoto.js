@@ -2,15 +2,22 @@ import React from 'react';
 import { Button, FormGroup, Label, Row, Col, Input, Container } from 'reactstrap';
 import ImageUploader from 'react-images-upload';
 import { labels } from '../../helpers/localization';
+import API from '../../helpers/API';
+
 
 class LoanPhoto extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      picture: null
+      picture: null,
+      bike: props.info.selectedBike,
+      user: props.info.selectedUser
+
     }
   }
+
+ 
 
 
   onSelect(picture) {
@@ -18,6 +25,19 @@ class LoanPhoto extends React.Component {
   }
 
   next() {
+
+    console.log(this.state)
+
+    /*API.get(`BikeHistory`).then(data => {
+      console.log(data);
+
+    })*/
+
+    API.get(`bikeHistory`).then(data => {
+      console.log(data)
+
+    })
+    
 
   }
 

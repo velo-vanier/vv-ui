@@ -8,7 +8,6 @@ import {
   NavItem,
   NavLink } from 'reactstrap';
   import {switchLanguage, labels} from '../../helpers/localization';
-  import logo from '../../components/layouts/navlogo.png';
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/"><img src={logo} /> Vélo-Vanier</NavbarBrand>
+        <NavbarBrand href="/">Vélo-Vanier</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

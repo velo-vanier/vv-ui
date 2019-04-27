@@ -17,8 +17,12 @@ class LoanInfo extends React.Component {
       returnDate: moment().add(4, 'w'),//4 weeks
       helmet: 0,
       lights: 0,
-      locks: []
+      locks: [],
+      borrower: props.borrower
+
     }
+
+    console.log(this.state)
   }
 
 
@@ -103,8 +107,8 @@ class LoanInfo extends React.Component {
   next() {
     if (this.state.bikes.length === 0)
       return;
-
-    this.props.onSelect(this.state);
+    
+      this.props.onSelect(this.state);
   }
 
   render() {
