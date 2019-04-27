@@ -74,7 +74,9 @@ export default class LoanWizard extends React.Component {
         />;
         break;
       case 4:
-        output = <LoanPhoto />;
+        output = <LoanPhoto
+        info={this.state}
+        />;
         break;
       default: break;
     }
