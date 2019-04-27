@@ -280,12 +280,13 @@ export default class ShowBike extends React.Component {
                   <span class="badge badge-light">Lights</span>
                 </td>
               </tr>
-
               <tr>
                 <td>Comments</td>
                 <td>{`${this.state.bike.data.Comments}`}</td>
               </tr>
-              <tr />
+              <tr>{this.getAccessory('BellHorn')}</tr>
+              <tr>{this.getAccessory('Reflectors')}</tr>
+              <tr>{this.getAccessory('Lights')}</tr>
             </tbody>
           </Table>
         </div>
