@@ -13,7 +13,7 @@ export default class ShowUserList extends React.Component {
         return (
           <DefaultLayout>
             <div>
-               <h1>Users List!</h1>           
+               <h1>Borrower's List</h1>           
             </div>
           </DefaultLayout>
         );
