@@ -18,6 +18,7 @@ const Entry = () => (
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
       <Route path="/users/:id" component={ShowUser} />
+      <Route path="/users" component={ShowUserList} />
       <Route path="/bikes/" component={BikeIndex} />
     </Switch>
   </Router>
