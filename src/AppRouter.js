@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/home/Home'
+import LoanPage from './components/loans/Loan'
 import NewBike from './components/bikes/New'
 import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
@@ -14,7 +15,8 @@ const Entry = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/bikes/new" component={NewBike} />
-      <Route path="/loan" component={LoanWizard} />
+      <Route path="/loans" component={LoanPage} />
+      /*<Route path="/loan" component={LoanWizard} />*/
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
       <Route path="/users/:id" component={ShowUser} />
