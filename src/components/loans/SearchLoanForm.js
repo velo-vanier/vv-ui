@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormFeedback, Table, InputGroup, InputGroupAddon, InputGroupText, Card} from "reactstrap";
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormFeedback, Table, InputGroup, InputGroupAddon, InputGroupText, Card} from "reactstrap";
 import { labels } from "../../helpers/localization";
 import API from "../../helpers/API"
 import LookupSelect from '../common/LookupSelect';
@@ -40,30 +40,33 @@ render() {
     <Form onSubmit={this.submit}>
     <Card body style={{ backgroundColor: '#f8f9fa', borderColor: '#f8f9fa', margin: '40px 0' }}>
         <FormGroup>
-          <Label for="searchLoan">Search loans</Label>
-        <InputGroup>
-          {this.state.selectedUser === null ?
-            <LookupSelect
-              placeholder={labels.searchUserPlaceholder}
-              entity="users"
-              apiParams={{ "filters[Role]": "Borrower" }}
-              renderItem={user => user.FirstName + " " + user.LastName}
-              onSelect={user => this.selectUser(user)}
-            />
-            :
-            <Input
-              type="text"
-              name="searchLoan"
-              id="searchLoan"
-              value={this.state.selectedUser.FirstName + " " + this.state.selectedUser.LastName}
-              onClick={e => this.reset()}
-            />
-          }
-
-          <InputGroupAddon addonType="append">
-             <Button onClick={this.submit}>Search</Button>
-         </InputGroupAddon>
-          </InputGroup>
+        <Label for="searchLoan">Search loans</Label>
+        <Row>
+          <Col xs="10">
+              {this.state.selectedUser === null ?
+                <LookupSelect
+                  placeholder={labels.searchUserPlaceholder}
+                  entity="users"
+                  apiParams={{ "filters[Role]": "Borrower" }}
+                  renderItem={user => user.FirstName + " " + user.LastName}
+                  onSelect={user => this.selectUser(user)}
+                />
+                :
+                <Input
+                  type="text"
+                  name="searchLoan"
+                  id="searchLoan"
+                  value={this.state.selectedUser.FirstName + " " + this.state.selectedUser.LastName}
+                  onClick={e => this.reset()}
+                />
+              }
+            </Col>
+             <Col xs="2">
+                <div class="text-left">
+                  <Button onClick={this.submit}>Search</Button>
+                </div>
+              </Col>
+          </Row>
         </FormGroup>
       </Card>
 

@@ -10,6 +10,7 @@ import ShowUser from './components/users/Show'
 import LoanWizard from "./components/LoanWizard/LoanWizard";
 import LoanListing from "./components/loans/LoanListing";
 import LoanReturn from "./components/loans/LoanReturn";
+import LoanConfirmation from "./components/loans/LoanConfirmation";
 
 const Entry = () => (
   <Router>
@@ -18,6 +19,7 @@ const Entry = () => (
       <Route path="/bikes/new" component={NewBike} />
       <Route path="/loans/listing" component={LoanListing} />
       <Route path="/loans/add" component={LoanPage} />
+      <Route path="/loans/confirmation" component={LoanConfirmation} />
       <Route path="/loans/return" component={LoanReturn} />
       /*<Route path="/loan" component={LoanWizard} />*/
       <Route path="/users/new" component={NewUser} />
