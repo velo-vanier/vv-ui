@@ -52,7 +52,7 @@ const LoanReturn = props => {
                </Row>
           </Card>
 
-<a href="landing" class="btn btn-primary">Confirm</a> <a href="edit" class="btn btn-outline-primary">Edit</a>
+<a href="listing" class="btn btn-lg btn-success">Confirm</a> <a href="edit" class="btn btn-lg btn-outline-dark">Edit</a>
 
       </Container>
     </DefaultLayout>
