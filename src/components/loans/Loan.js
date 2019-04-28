@@ -8,7 +8,7 @@ const LoanPage = props => {
   return (
     <DefaultLayout>
       <Container>
-        <h1>Welcome to the loan page</h1>
+        <h1>Loan a bike</h1>
         <LoanForm {...props} />
       </Container>
     </DefaultLayout>
