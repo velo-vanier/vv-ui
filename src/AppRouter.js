@@ -21,6 +21,7 @@ const Entry = () => (
       <Route path="/loans/add" component={LoanPage} />
       <Route path="/loans/confirmation" component={LoanConfirmation} />
       <Route path="/loans/return" component={LoanReturn} />
+      <Route path="/loans/confirmation" component={LoanConfirmation} />
       /*<Route path="/loan" component={LoanWizard} />*/
       <Route path="/users/new" component={NewUser} />
       <Route path="/bikes/:id" component={ShowBike} />
