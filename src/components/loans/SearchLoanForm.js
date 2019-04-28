@@ -56,7 +56,7 @@ render() {
                   <td>613-123-4567</td>
                   <td><a href="mailto:joe.doe@email.co">joe.doe@email.com</a></td>
                   <td>W-185</td>
-                  <td><Button outline color="primary" size="sm">Return</Button>{' '}</td>
+                  <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
                 <tr>
                   <th scope="row">03/12/2019</th>
@@ -64,7 +64,7 @@ render() {
                   <td>613-123-4567</td>
                   <td><a href="mailto:m.smith@longemailaddress.com">m.smith@longemailaddress.com</a></td>
                   <td>C05</td>
-                  <td><Button outline color="primary" size="sm">Return</Button>{' '}</td>
+                  <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
                 <tr>
                   <th scope="row">03/12/2019</th>
@@ -72,7 +72,7 @@ render() {
                   <td>613-123-4567</td>
                   <td><a href="mailto:ella.jones@email.com">ella.jones@email.co</a></td>
                   <td>C01</td>
-                  <td><Button outline color="primary" size="sm">Return</Button>{' '}</td>
+                  <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
               </tbody>
             </Table>

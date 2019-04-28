@@ -11,7 +11,7 @@ const LoanListing = props => {
       <Container>
         <Row>
            <Col xs="8">
-            <h1>Loan</h1>
+            <h1>Loans</h1>
             </Col>
            <Col xs="4" className="text-right">
            <a href="add" class="btn btn-lg btn-success">Loan a bike</a>
