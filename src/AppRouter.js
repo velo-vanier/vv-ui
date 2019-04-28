@@ -2,14 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/home/Home'
 import NewBike from './components/bikes/New'
-import EditBike from './components/bikes/Edit'
 import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
 import ShowUser from './components/users/Show'
 import LoanWizard from "./components/LoanWizard/LoanWizard"
 import EditBike from './components/bikes/EditBike';
-
 
 const Entry = () => (
   <Router>
