@@ -28,7 +28,7 @@ const LoanReturn = props => {
             <Col xs="6">
               <h3>Contact</h3>
               <p>613-123-4567</p>
-              <p>ella.jones@email.com</p>
+              <p>ellajones@email.com</p>
              </Col>
              </Row>
         </Card>
@@ -65,7 +65,7 @@ const LoanReturn = props => {
                   <Input type="textarea" name="text" id="exampleText" />
             </FormGroup>
 
-            <a href="listing" class="btn btn-lg btn-success">Return</a> 
+            <a href="listing" class="btn btn-lg btn-success">Return</a>
 
 
       </Container>
