@@ -41,11 +41,9 @@ render() {
     <Card body style={{ backgroundColor: '#f8f9fa', borderColor: '#f8f9fa', margin: '40px 0' }}>
         <FormGroup>
           <Label for="searchLoan">Search loans</Label>
+        <InputGroup>
           {this.state.selectedUser === null ?
             <LookupSelect
-              type="text"
-              name="searchLoan"
-              id="searchLoan"
               placeholder={labels.searchUserPlaceholder}
               entity="users"
               apiParams={{ "filters[Role]": "Borrower" }}
@@ -55,13 +53,17 @@ render() {
             :
             <Input
               type="text"
+              name="searchLoan"
+              id="searchLoan"
               value={this.state.selectedUser.FirstName + " " + this.state.selectedUser.LastName}
               onClick={e => this.reset()}
             />
           }
-           <InputGroupAddon addonType="append">
-              <Button onClick={this.submit}>Search</Button>
-          </InputGroupAddon>
+
+          <InputGroupAddon addonType="append">
+             <Button onClick={this.submit}>Search</Button>
+         </InputGroupAddon>
+          </InputGroup>
         </FormGroup>
       </Card>
 
