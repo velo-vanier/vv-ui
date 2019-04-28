@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import ImageUploader from 'react-images-upload';
 import 'react-datepicker/dist/react-datepicker.css';
-import DefaultLayout from "../layouts/Default";
+
 
 export default class LoanForm extends React.Component {
   constructor(props){
@@ -126,7 +126,6 @@ export default class LoanForm extends React.Component {
     const { bikes } = this.state;
 
     return (
-      <DefaultLayout>
         <Container>
           <Row>
             <Col xs="10">
@@ -299,7 +298,6 @@ export default class LoanForm extends React.Component {
             </Col>
           </Row>
         </Container>
-      </DefaultLayout>
     );
   }
 
