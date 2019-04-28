@@ -37,9 +37,9 @@ const LoanReturn = props => {
              <Col xs="6">
              <h3>Bike Loaned</h3>
              <p>C05</p>
-             
-             <div><strong>Loan Date: </strong>03/10/2019</div>
-             <div><strong>Return Date: </strong>04/10/2019</div>
+
+             <div><strong>Loan Date: </strong>02/12/2019</div>
+             <div><strong>Return Date: </strong>03/12/2019</div>
 
               </Col>
 
