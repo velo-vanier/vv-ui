@@ -16,7 +16,7 @@ const Entry = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/bikes/new" component={NewBike} />
-      <Route path="/loans/lisiting" component={LoanListing} />
+      <Route path="/loans/listing" component={LoanListing} />
       <Route path="/loans/add" component={LoanPage} />
       <Route path="/loans/return" component={LoanReturn} />
       /*<Route path="/loan" component={LoanWizard} />*/

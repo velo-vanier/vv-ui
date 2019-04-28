@@ -14,7 +14,7 @@ const LoanListing = props => {
             <h1>Loan</h1>
             </Col>
            <Col xs="4" className="text-right">
-           <button class="btn btn-lg btn-success">Loan a bike</button>
+           <a href="add" class="btn btn-lg btn-success">Loan a bike</a>
            </Col>
         </Row>
       <SearchLoanForm {...props} />
