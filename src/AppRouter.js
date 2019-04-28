@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/home/Home'
 import NewBike from './components/bikes/New'
+import EditBike from './components/bikes/Edit'
 import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
