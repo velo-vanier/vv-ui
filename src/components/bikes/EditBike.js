@@ -81,7 +81,7 @@ export default class EditBikeForm extends React.Component {
                 placeholder="123456789"
                 value={this.state.bike.SerialNumber}
                 onChange={this.updateBike("SerialNumber")}
-              // invalid={Boolean(errors.SerialNumber)}
+                invalid={Boolean(errors.SerialNumber)}
               />
               {
                 (errors.SerialNumber) &&
