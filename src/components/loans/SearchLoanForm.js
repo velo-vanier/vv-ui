@@ -84,14 +84,14 @@ render() {
               <tbody>
                 <tr>
                   <th scope="row"><span className="text-danger">03/12/2019</span></th>
-                  <td><a href="#">Joe Doe</a></td>
+                  <td><a href="#">Ella Jones</a></td>
                   <td>613-123-4567</td>
-                  <td><a href="mailto:joe.doe@email.co">joe.doe@email.com</a></td>
-                  <td>W-185</td>
+                  <td><a href="mailto:ella.jones@email.com">ella.jones@email.com</a></td>
+                  <td>C01</td>
                   <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
                 <tr>
-                  <th scope="row">03/12/2019</th>
+                  <th scope="row">04/29/2019</th>
                   <td><a href="#">Mike Smith</a></td>
                   <td>613-123-4567</td>
                   <td><a href="mailto:m.smith@longemailaddress.com">m.smith@longemailaddress.com</a></td>
@@ -99,11 +99,11 @@ render() {
                   <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
                 <tr>
-                  <th scope="row">03/12/2019</th>
-                  <td><a href="#">Ella Jones</a></td>
+                  <th scope="row">01/12/2019</th>
+                  <td><a href="#">Joe Doe</a></td>
                   <td>613-123-4567</td>
-                  <td><a href="mailto:ella.jones@email.com">ella.jones@email.co</a></td>
-                  <td>C01</td>
+                  <td><a href="mailto:joe.doe@email.co">joe.doe@email.com</a></td>
+                  <td>W-185</td>
                   <td><a href="return" class="btn btn-sm btn-outline-primary">Return</a></td>
                 </tr>
               </tbody>
