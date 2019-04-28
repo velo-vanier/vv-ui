@@ -2,18 +2,37 @@ import React from "react";
 import { Button, Form, FormGroup, Label, Input, FormFeedback, Table, InputGroup, InputGroupAddon, InputGroupText, Card} from "reactstrap";
 import { labels } from "../../helpers/localization";
 import API from "../../helpers/API"
+import LookupSelect from '../common/LookupSelect';
 
 
 export default class SearchLoanForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedUser: null
+    }
   }
 
 submit() {
   alert('Great success!')
-  API
+  /*API
     .post('loan', this.state.user)
-    .then(res => {})
+    .then(res => {})*/
+}
+
+selectUser(user) {
+  this.setState({ selectedUser: user });
+}
+
+reset() {
+  this.setState({ selectedUser: null });
+}
+
+next() {
+  if (!this.state.selectedUser)
+    return;
+
+  this.props.onSelect(this.state.selectedUser);
 }
 
 render() {
@@ -22,19 +41,27 @@ render() {
     <Card body style={{ backgroundColor: '#f8f9fa', borderColor: '#f8f9fa', margin: '40px 0' }}>
         <FormGroup>
           <Label for="searchLoan">Search loans</Label>
-        <InputGroup>
-        <Input
-          type="text"
-          name="searchLoan"
-          id="searchLoan"
-          placeholder="Search by name, email or phone number"
-          onChange={ () => {} }
-          invalid={false}
-          />
+          {this.state.selectedUser === null ?
+            <LookupSelect
+              type="text"
+              name="searchLoan"
+              id="searchLoan"
+              placeholder={labels.searchUserPlaceholder}
+              entity="users"
+              apiParams={{ "filters[Role]": "Borrower" }}
+              renderItem={user => user.FirstName + " " + user.LastName}
+              onSelect={user => this.selectUser(user)}
+            />
+            :
+            <Input
+              type="text"
+              value={this.state.selectedUser.FirstName + " " + this.state.selectedUser.LastName}
+              onClick={e => this.reset()}
+            />
+          }
            <InputGroupAddon addonType="append">
               <Button onClick={this.submit}>Search</Button>
           </InputGroupAddon>
-         </InputGroup>
         </FormGroup>
       </Card>
 
