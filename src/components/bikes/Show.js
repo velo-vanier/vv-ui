@@ -59,6 +59,12 @@ export default class ShowBike extends React.Component {
     }
   }
 
+  edit = () => {
+    const id = this.props.match.params.id
+    let path = (`edit`);
+    this.props.history.push(path);
+  }
+
   getStatus() {
     if (this.state.bike.data.ID_Status == "5" || this.state.bike.data.ID_Status == "6") {
       console.log("State is repair or test")
@@ -231,6 +237,7 @@ export default class ShowBike extends React.Component {
           </Table>
         </div>
 
+        <Button onClick={this.edit}>Edit</Button>
         {this.getStatus()}
       </DefaultLayout>
     );

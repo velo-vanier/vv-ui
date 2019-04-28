@@ -7,70 +7,70 @@ import { Table } from 'reactstrap';
 export default class ShowUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       user: {
         data: {
           CreateDateTime: null,
-          Email: null, 
-          FirstName: null, 
-          ID_User: null, 
-          LastName: null, 
-          ParentID: null, 
-          Password: null, 
-          Phone: null, 
+          Email: null,
+          FirstName: null,
+          ID_User: null,
+          LastName: null,
+          ParentID: null,
+          Password: null,
+          Phone: null,
           PostalCode: null,
-          Role: null, 
-          photos:[{url:"https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2017/03/cat-tongue_AdobeStock_70141743-1024x719.jpeg"}],
+          Role: null,
+          photos: [{ url: "https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2017/03/cat-tongue_AdobeStock_70141743-1024x719.jpeg" }],
           PhotoConsent: null, //boolean -- did they give consent for photos to be published
           dependents: null, //array of user records that have ParentId = this.user.data.ID_User
         }
-      }, 
+      },
       bikes: {
         data: {
           data: [{
-              BikeLabel: null,
-              Class: null,
-              overDue: null,
-              history:[{DueDateTime:null}]
-              }]
+            BikeLabel: null,
+            Class: null,
+            overDue: null,
+            history: [{ DueDateTime: null }]
+          }]
         }
       }
     }
-  } 
-    componentDidMount() {
-      const id = this.props.match.params.id;
-      // fetch bike record from api using id
-      console.log('id', id)
-      
-      //get bikes that are On Loan to the User with id
-      //ID_Status = 3 = On Loan
-      API.get(`bikes`, {'filters[ID_User]': id, 'filters[ID_Status]':3  }).then(data => {
-        console.log(data)
-        this.setState({bikes: data})
-        console.log(this.state.bikes.data.data);
+  }
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    // fetch bike record from api using id
+    console.log('id', id)
 
-      })
-      API.get(`users/${id}`).then(data => {
-        console.log(data)
-        this.setState({user: data});
-      })
+    //get bikes that are On Loan to the User with id
+    //ID_Status = 3 = On Loan
+    API.get(`bikes`, { 'filters[ID_User]': id, 'filters[ID_Status]': 3 }).then(data => {
+      console.log(data)
+      this.setState({ bikes: data })
+      console.log(this.state.bikes.data.data);
+
+    })
+    API.get(`users/${id}`).then(data => {
+      console.log(data)
+      this.setState({ user: data });
+    })
+  }
+
+  getNumBikesOut() {
+    if (this.state.bikes.data.data && !!this.state.bikes.data.data.length) {
+      return this.state.bikes.data.data.length;
     }
-
-    getNumBikesOut(){
-      if(this.state.bikes.data.data && !!this.state.bikes.data.data.length){
-        return this.state.bikes.data.data.length;
-      }
-      else{
-        return 0;
-      }
+    else {
+      return 0;
     }
+  }
 
 
-  getTableRowsBikesOut(){
-    if(this.getNumBikesOut() > 0) {
+  getTableRowsBikesOut() {
+    if (this.getNumBikesOut() > 0) {
       //Write table row for each bike loaned to user/user's children
 
-      return this.state.bikes.data.data.map(function(element) {
+      return this.state.bikes.data.data.map(function (element) {
         return <tr>
           <td>{element.BikeLabel}</td>
           <td>{element.overDue}</td>
@@ -78,30 +78,30 @@ export default class ShowUser extends React.Component {
         </tr>;
       })
     }
-    else{
+    else {
       return <tr>
-                <td>No Bikes Out</td>
-                <td>No Bikes Out</td>
-                <td>No Bikes Out</td>
-              </tr>;
+        <td>No Bikes Out</td>
+        <td>No Bikes Out</td>
+        <td>No Bikes Out</td>
+      </tr>;
     }
   }
 
-  getTableRowsChildren(){
-    if(this.state.user.data.dependents && !!this.state.user.data.dependents.length){
-      return this.state.user.data.dependents.map(function(element){
+  getTableRowsChildren() {
+    if (this.state.user.data.dependents && !!this.state.user.data.dependents.length) {
+      return this.state.user.data.dependents.map(function (element) {
         return <tr>
-                  <td>{element.FirstName}</td>
-                  <td>{element.LastName}</td>
-                </tr>;
+          <td>{element.FirstName}</td>
+          <td>{element.LastName}</td>
+        </tr>;
       })
     }
-    else{
+    else {
       return <tr>
-      <td>No Children</td>
-      <td></td>
+        <td>No Children</td>
+        <td></td>
       </tr>
-    } 
+    }
   }
 
   render() {
@@ -109,7 +109,7 @@ export default class ShowUser extends React.Component {
     return (
       <DefaultLayout>
         <h2>{`${this.state.user.data.FirstName} ${this.state.user.data.LastName}`}</h2>
-        <img src= {photoSrc} alt={this.state.user.data.FirstName} width='400px'/>
+        <img src={photoSrc} alt={this.state.user.data.FirstName} width='400px' />
         <p>{this.state.user.FirstName} {this.state.user.LastName} </p>
         <div>
           <h2>Bikes Loaned</h2>
@@ -124,7 +124,7 @@ export default class ShowUser extends React.Component {
             </tbody>
           </table>
         </div>
-        <div style={{height:"40px"}}></div>
+        <div style={{ height: "40px" }}></div>
         <div>
           <table class="table">
             <tbody>
@@ -146,14 +146,14 @@ export default class ShowUser extends React.Component {
               </tr>
               <tr>
                 <td>Children Under 18</td>
-                  {this.getTableRowsChildren()}
+                {this.getTableRowsChildren()}
               </tr>
               <tr>
                 <td>Photo Consent</td>
                 <td>{`${this.state.user.data.PhotoConsent}`}</td>
               </tr>
             </tbody>
-          </table>         
+          </table>
         </div>
       </DefaultLayout>
     );
