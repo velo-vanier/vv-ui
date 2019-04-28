@@ -6,7 +6,8 @@ import ShowBike from './components/bikes/Show'
 import BikeIndex from './components/bikes/Index'
 import NewUser from './components/users/New'
 import ShowUser from './components/users/Show'
-import LoanWizard from "./components/LoanWizard/LoanWizard";
+import LoanWizard from "./components/LoanWizard/LoanWizard"
+import EditBike from './components/bikes/EditBike';
 
 
 const Entry = () => (
@@ -16,9 +17,12 @@ const Entry = () => (
       <Route path="/bikes/new" component={NewBike} />
       <Route path="/loan" component={LoanWizard} />
       <Route path="/users/new" component={NewUser} />
-      <Route path="/bikes/:id" component={ShowBike} />
       <Route path="/users/:id" component={ShowUser} />
-      <Route path="/bikes/" component={BikeIndex} />
+
+      <Route exact path="/bikes" component={BikeIndex} />
+      <Route exact path="/bikes/:id" component={ShowBike} />
+      <Route exact path="/bikes/:id/edit" component={EditBike} />
+
     </Switch>
   </Router>
 );
